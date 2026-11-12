@@ -1,0 +1,1494 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Informe mensual · Fábrica de Producción UIDE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root{
+  --ink:#1f2430; --ink2:#5a6170; --ink3:#8b919c; --line:#e3e5ea; --canvas:#f3f4f6; --surface:#ffffff;
+  --brand:#e2435b; --dis:#0e8c8c; --vid:#5b47c9; --meta:#a0a7b4; --ok:#2f9e62; --warn:#d99a06; --bad:#d9443f;
+  --dis-soft:#e3f3f3; --brand-soft:#fde8eb; --ok-soft:#e5f4ec; --warn-soft:#fdf3dc; --bad-soft:#fbe6e5;
+  color-scheme: light;
+}
+:root{--vid-soft:#ece9fb}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ink:#eceef2; --ink2:#b4b9c3; --ink3:#878d98; --line:#30343d; --canvas:#15171c; --surface:#1d2027;
+    --brand:#f2647a; --dis:#3cb6b4; --vid:#8f7ff0; --meta:#6f7684; --ok:#4cc184; --warn:#e8b33a; --bad:#ef6a65;
+    --dis-soft:#16302f; --vid-soft:#25223d; --brand-soft:#3a1d23; --ok-soft:#173226; --warn-soft:#3a2f12; --bad-soft:#3b1d1c;
+    color-scheme: dark;
+  }
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:120px}
+body{margin:0;background:var(--canvas);color:var(--ink);font-family:Poppins,"Segoe UI",Roboto,Arial,sans-serif;font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+header.top{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+.toprow{display:flex;align-items:center;gap:16px;padding:14px 0 8px;flex-wrap:wrap}
+.brandmark{width:36px;height:36px;border-radius:10px;background:var(--brand);color:#fff;display:grid;place-items:center;font-weight:700;font-size:15px;letter-spacing:-.5px}
+.ttl{flex:1;min-width:220px}
+.ttl h1{font-size:18px;margin:0;font-weight:600;letter-spacing:-.2px}
+.ttl p{margin:0;color:var(--ink2);font-size:13px}
+select,button{font:inherit}
+.monthsel{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:10px;padding:7px 12px;font-size:14px}
+.btn{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:10px;padding:7px 14px;font-size:14px;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+.btn:hover{border-color:var(--ink3)}
+.btn.primary{background:var(--ink);color:var(--surface);border-color:var(--ink)}
+:focus-visible{outline:3px solid var(--brand);outline-offset:2px}
+nav.tabs{display:flex;gap:4px;overflow-x:auto;padding-bottom:0;scrollbar-width:none}
+nav.tabs::-webkit-scrollbar{display:none}
+nav.tabs button{border:0;background:none;color:var(--ink2);padding:10px 12px 12px;font-size:14px;cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap}
+nav.tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--brand);font-weight:600}
+main{padding:28px 0 60px}
+section.view{display:none}
+section.view.on{display:block}
+h2.find{font-size:26px;line-height:1.25;letter-spacing:-.4px;margin:0 0 6px;font-weight:600;max-width:30ch}
+.sub{color:var(--ink2);margin:0 0 22px;max-width:72ch}
+h3{font-size:17px;margin:0 0 4px;font-weight:600}
+.cap{color:var(--ink2);font-size:13px;margin:0 0 12px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px}
+.grid{display:grid;gap:16px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:900px){.g3,.g4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.g2,.g3,.g4{grid-template-columns:1fr} h2.find{font-size:22px}}
+.mt{margin-top:16px}.mt2{margin-top:28px}
+.chart{position:relative;height:280px}
+.chart.tall{height:340px}.chart.short{height:220px}
+/* hero */
+.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:28px;align-items:center}
+@media (max-width:900px){.hero{grid-template-columns:1fr}}
+.bignum{font-size:84px;line-height:.95;font-weight:700;letter-spacing:-3px;font-variant-numeric:tabular-nums}
+.bignum small{font-size:22px;letter-spacing:0;font-weight:500;color:var(--ink2);margin-left:8px}
+.lede{font-size:18px;color:var(--ink);max-width:40ch;margin:12px 0 0}
+.kpi{display:flex;flex-direction:column;gap:2px}
+.kpi .v{font-size:30px;font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:-.5px}
+.kpi .l{font-size:13px;color:var(--ink2)}
+.kpi .d{font-size:12.5px;margin-top:4px}
+.up{color:var(--ok)}.down{color:var(--bad)}.flat{color:var(--ink3)}
+.bar{height:8px;border-radius:6px;background:var(--line);overflow:hidden;margin-top:8px}
+.bar>i{display:block;height:100%;border-radius:6px}
+/* 3 columns story */
+.trio .col h3{display:flex;align-items:center;gap:8px}
+.dot{width:10px;height:10px;border-radius:50%;display:inline-block;flex:none}
+.trio ul{margin:10px 0 0;padding-left:18px}
+.trio li{margin:0 0 8px}
+.trio li b{font-weight:600}
+/* actions */
+.acts{display:grid;gap:12px}
+.act{display:grid;grid-template-columns:150px 1fr 1fr;gap:16px;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+@media (max-width:760px){.act{grid-template-columns:1fr;gap:6px}}
+.act .tag{font-size:12.5px;font-weight:600;padding:3px 10px;border-radius:20px;justify-self:start;align-self:start}
+.tag.dis{background:var(--dis-soft);color:var(--dis)}.tag.vid{background:var(--vid-soft);color:var(--vid)}.tag.cal{background:var(--warn-soft);color:var(--warn)}.tag.ent{background:var(--brand-soft);color:var(--brand)}.tag.pro{background:var(--ok-soft);color:var(--ok)}
+.act .q{font-weight:600}
+.act .dato{color:var(--ink2);font-size:14px}
+.act .acc{font-size:14px}
+.act .acc b{font-weight:600}
+/* tables */
+.tw{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14px;font-variant-numeric:tabular-nums}
+th{font-weight:600;text-align:left;color:var(--ink2);font-size:12.5px;padding:8px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:9px 10px;border-bottom:1px solid var(--line)}
+td.n,th.n{text-align:right}
+.pill{display:inline-block;padding:2px 10px;border-radius:20px;font-size:12.5px;font-weight:600}
+.pill.ok{background:var(--ok-soft);color:var(--ok)}.pill.warn{background:var(--warn-soft);color:var(--warn)}.pill.bad{background:var(--bad-soft);color:var(--bad)}.pill.n{background:var(--canvas);color:var(--ink2)}
+.note{font-size:12.5px;color:var(--ink3);margin-top:10px}
+.why{border-left:4px solid var(--brand);background:var(--surface);border-radius:0 12px 12px 0;padding:16px 20px}
+.why ol{margin:8px 0 0;padding-left:20px}.why li{margin-bottom:6px}
+/* semáforo */
+.sem{display:flex;gap:14px;align-items:flex-start}
+.sem .lamp{width:16px;height:16px;border-radius:50%;margin-top:4px;flex:none}
+/* preguntas */
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:22px;padding:8px 14px;font-size:14px;cursor:pointer;text-align:left}
+.chip[aria-pressed="true"]{border-color:var(--ink);background:var(--ink);color:var(--surface)}
+.answer{min-height:220px}
+.answer .big{font-size:40px;font-weight:700;letter-spacing:-1px}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--ink2);margin-bottom:8px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.sw{width:12px;height:12px;border-radius:3px;display:inline-block}
+.sw.line{height:3px;border-radius:2px}
+.sw.dash{height:0;border-top:2px dashed var(--meta);width:16px;border-radius:0}
+.dots{position:relative}
+@media (max-width:760px){#qa-grid{grid-template-columns:1fr!important}}
+footer{color:var(--ink3);font-size:12.5px;padding:24px 0 40px;border-top:1px solid var(--line)}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <div class="toprow">
+      <div class="brandmark" aria-hidden="true">eig</div>
+      <div class="ttl"><h1>Informe mensual de la Fábrica de Producción</h1><p id="hdrsub">Maestrías UIDE · diseño instruccional y video</p></div>
+      <label class="sr" style="font-size:13px;color:var(--ink2)">Mes
+        <select id="mes" class="monthsel" aria-label="Mes del informe"></select></label>
+      <button class="btn" id="listen" type="button" aria-pressed="false"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg><span>Escuchar el resumen</span></button>
+    </div>
+    <nav class="tabs" role="tablist" aria-label="Secciones">
+      <button role="tab" data-v="resumen" aria-selected="true">Resumen</button>
+      <button role="tab" data-v="antes">Antes y después</button>
+      <button role="tab" data-v="diseno">Diseño</button>
+      <button role="tab" data-v="video">Video</button>
+      <button role="tab" data-v="calidad">Calidad</button>
+      <button role="tab" data-v="entrada">Llegada de materias</button>
+      <button role="tab" data-v="proy">Proyección y seguimiento</button>
+      <button role="tab" data-v="preguntas">Pregúntale a los datos</button>
+      <button role="tab" data-v="metodo">Método</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+<!-- RESUMEN -->
+<section class="view on" id="v-resumen" role="tabpanel">
+  <div class="hero">
+    <div>
+      <div class="bignum" id="h-num">0<small>materias completas</small></div>
+      <p class="lede" id="h-lede"></p>
+    </div>
+    <div class="card">
+      <h3>Anticipación al lanzamiento</h3>
+      <p class="cap">Cuántos días antes de su lanzamiento salió cada materia completada en el mes</p>
+      <div class="chart short"><canvas id="c-antic"></canvas></div>
+    </div>
+  </div>
+  <div class="grid g4 mt2" id="kpis"></div>
+  <div class="grid g3 mt2 trio" id="trio"></div>
+  <div class="mt2">
+    <h3>Qué hacemos en el mes siguiente</h3>
+    <p class="cap">Cada acción sale de un dato del mes. Se revisan en el seguimiento semanal.</p>
+    <div class="acts" id="acts-res"></div>
+  </div>
+</section>
+
+<!-- ANTES Y DESPUES -->
+<section class="view" id="v-antes" role="tabpanel">
+  <h2 class="find">Desde el 12/10 cada materia tarda menos y diseño y video terminan casi a la vez</h2>
+  <p class="sub">Semanas de lunes a domingo desde el 14/9. La franja gris son las 4 semanas antes del cambio de coordinación (12/10). Pasa el cursor por los puntos para ver el valor.</p>
+  <div class="grid g2">
+    <div class="card"><h3>Días de la primera sesión a materia completa</h3><p class="cap">Mediana de las materias completadas cada semana. Menos es mejor.</p><div class="chart"><canvas id="c-ciclo"></canvas></div></div>
+    <div class="card"><h3>Días entre el fin de diseño y el fin de video</h3><p class="cap">Mediana por semana. Menos es mejor: la materia no espera a un frente.</p><div class="chart"><canvas id="c-brecha"></canvas></div></div>
+    <div class="card"><h3>Diseño: materias producidas por día hábil</h3><p class="cap">Entregables trabajados ÷ 12, dividido entre los días hábiles de la semana.</p><div class="chart"><canvas id="c-dpd"></canvas></div></div>
+    <div class="card"><h3>Video: materias producidas por día hábil</h3><p class="cap">Videos ÷ 6. En septiembre editaban 3–4 personas; desde octubre, 2 editoras y desde el 4/11, 3.</p><div class="chart"><canvas id="c-vpd"></canvas></div></div>
+  </div>
+  <div class="grid g2 mt2">
+    <div class="why">
+      <h3>Por qué puede parecer que todo sigue igual</h3>
+      <ol id="why-list"></ol>
+    </div>
+    <div class="card"><h3>Llegadas frente a completadas por semana</h3><p class="cap">Octubre. La fábrica solo puede terminar lo que ya llegó: la semana con menos completadas vino después de la semana con menos llegadas.</p><div class="chart short"><canvas id="c-lleg"></canvas></div></div>
+  </div>
+</section>
+
+<!-- DISEÑO -->
+<section class="view" id="v-diseno" role="tabpanel">
+  <h2 class="find" id="d-find"></h2>
+  <p class="sub" id="d-sub"></p>
+  <div class="grid g4" id="d-kpis"></div>
+  <div class="grid g2 mt2">
+    <div class="card"><h3>Producción frente a meta por semana</h3><div class="legend"><span><i class="sw" style="background:var(--dis)"></i>Producción</span><span><i class="sw" style="background:var(--line)"></i>Meta</span></div><div class="chart"><canvas id="c-dsem"></canvas></div></div>
+    <div class="card"><h3>Cumplimiento semanal</h3><p class="cap">Producción ÷ meta. La línea punteada es el 100 %.</p><div class="chart"><canvas id="c-dpct"></canvas></div></div>
+  </div>
+  <div class="card mt2"><h3>Minutos por pieza: octubre frente a la referencia histórica</h3><p class="cap">Mediana por pieza en los frentes cerrados del mes. Barra de color = octubre; barra gris = referencia. En amarillo, las piezas que tardaron más que la referencia.</p><div class="chart"><canvas id="c-dtipos"></canvas></div></div>
+  <div class="mt2"><h3>Qué hacemos en diseño</h3><div class="acts" id="acts-dis"></div></div>
+</section>
+
+<!-- VIDEO -->
+<section class="view" id="v-video" role="tabpanel">
+  <h2 class="find" id="v-find"></h2>
+  <p class="sub" id="v-sub"></p>
+  <div class="grid g4" id="v-kpis"></div>
+  <div class="grid g2 mt2">
+    <div class="card"><h3>Producción frente a meta por semana</h3><div class="legend"><span><i class="sw" style="background:var(--vid)"></i>Editoras</span><span><i class="sw" style="background:var(--meta)"></i>Apoyo de coordinación</span><span><i class="sw" style="background:var(--line)"></i>Meta editoras</span></div><div class="chart"><canvas id="c-vsem"></canvas></div></div>
+    <div class="card"><h3>Cumplimiento semanal de las editoras</h3><p class="cap">Producción de las editoras ÷ meta. La línea punteada es el 100 %.</p><div class="chart"><canvas id="c-vpct"></canvas></div></div>
+  </div>
+  <div class="card mt2"><h3>Minutos por pieza de video: octubre frente a la referencia</h3><div class="chart short"><canvas id="c-vtipos"></canvas></div></div>
+  <div class="mt2"><h3>Qué hacemos en video</h3><div class="acts" id="acts-vid"></div></div>
+</section>
+
+<!-- CALIDAD -->
+<section class="view" id="v-calidad" role="tabpanel">
+  <h2 class="find">La meta es 0 errores: la revisión es más rápida, pero 5 de cada 12 materias aún necesitan ajustes</h2>
+  <p class="sub">Datos de la revisión interna de materias terminadas (Cristina Alisente) y del registro de incidencias de UIDE. Versión preliminar: el detalle por materia se suma cuando llegue el Excel de revisión. El color indica la tendencia: verde si bajan los errores frente a la semana anterior, rojo si suben.</p>
+  <div class="grid g4" id="q-kpis"></div>
+  <div class="grid g2 mt2">
+    <div class="card"><h3>Materias revisadas por semana</h3><div class="legend"><span><i class="sw" style="background:var(--ok)"></i>Sin ajustes</span><span><i class="sw" style="background:var(--bad)"></i>Con ajustes (amarillo si bajaron frente a la semana anterior)</span><span><i class="sw" style="background:var(--meta)"></i>Cambio externo</span></div><div class="chart"><canvas id="c-qrev"></canvas></div></div>
+    <div class="card"><h3>Qué error se repite</h3><p class="cap">Materias con cada tipo de error, de 11 con ajustes. Una materia puede tener varios.</p><div class="chart"><canvas id="c-qerr"></canvas></div></div>
+  </div>
+  <div class="grid g2 mt2">
+    <div class="card"><h3>Incidencias registradas por UIDE por semana</h3><p class="cap">Todas las clasificaciones. 100 % solventadas, en 1 día de media.</p><div class="chart short"><canvas id="c-qinc"></canvas></div></div>
+    <div class="card"><h3>Origen de las incidencias</h3><p class="cap">85 incidencias del 1/10 al 10/11 según la clasificación del registro.</p><div class="chart short"><canvas id="c-qtipo"></canvas></div></div>
+  </div>
+  <div class="mt2"><h3>Qué hacemos en calidad</h3><div class="acts" id="acts-cal"></div></div>
+</section>
+
+<!-- ENTRADA -->
+<section class="view" id="v-entrada" role="tabpanel">
+  <h2 class="find" id="e-find"></h2>
+  <p class="sub">Cada fila es una materia que llegó de instruccional en el mes. El círculo vacío es la fecha en que debía llegar y el lleno, cuando ingresó al dashboard. La línea roja es el atraso.</p>
+  <div class="grid g4" id="e-kpis"></div>
+  <div class="card mt2"><h3>Debía llegar frente a llegó</h3><div class="legend"><span><i class="sw" style="background:transparent;border:2px solid var(--ink3);border-radius:50%"></i>Debía llegar</span><span><i class="sw" style="background:var(--bad);border-radius:50%"></i>Llegó tarde</span><span><i class="sw" style="background:var(--ok);border-radius:50%"></i>Llegó a tiempo o antes</span></div><div class="chart" id="e-wrap" style="height:900px"><canvas id="c-entrada"></canvas></div></div>
+  <div class="card mt2"><h3>Resumen por lote</h3><div class="tw"><table id="e-tab"></table></div></div>
+  <div class="mt2"><h3>Qué hacemos con la llegada de materias</h3><div class="acts" id="acts-ent"></div></div>
+</section>
+
+<!-- PROYECCION -->
+<section class="view" id="v-proy" role="tabpanel">
+  <h2 class="find" id="p-find"></h2>
+  <p class="sub" id="p-sub"></p>
+  <div class="grid g3" id="p-sem"></div>
+  <div class="grid g2 mt2">
+    <div class="card"><h3>Diseño: lo que falta hasta el lote 2/12</h3><p class="cap">Materias-equivalente pendientes de los lotes 11/11, 30/11 y 2/12. Punteada: lo que faltaría trabajando a la meta. Sólida: lo real.</p><div class="chart tall"><canvas id="c-pd"></canvas></div></div>
+    <div class="card"><h3>Video: lo que falta hasta el lote 2/12</h3><p class="cap">Misma lectura. Al llegar a 0, video pasa al lote de enero.</p><div class="chart tall"><canvas id="c-pv"></canvas></div></div>
+  </div>
+  <div class="grid g2 mt2">
+    <div class="card"><h3>Fechas por lote</h3><div class="tw"><table id="p-lotes"></table></div><p class="note">Lotes 11/11 y 30/11: fecha real. Lote 2/12 y enero: proyección a la meta con festivos y vacaciones registradas.</p></div>
+    <div class="card"><h3>Seguimiento semanal</h3><div class="tw"><table id="p-segtab"></table></div></div>
+  </div>
+  <div class="mt2"><h3>Qué hacemos para cumplir la proyección</h3><div class="acts" id="acts-pro"></div></div>
+</section>
+
+<!-- PREGUNTAS -->
+<section class="view" id="v-preguntas" role="tabpanel">
+  <h2 class="find">Pregúntale a los datos</h2>
+  <p class="sub">Elige una pregunta. La respuesta se calcula con los datos del mes seleccionado.</p>
+  <div class="grid" style="grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:20px" id="qa-grid">
+    <div class="chips" id="chips" style="align-content:flex-start"></div>
+    <div class="card answer" id="answer" aria-live="polite"><p class="cap">La respuesta aparece aquí.</p></div>
+  </div>
+</section>
+
+<!-- METODO -->
+<section class="view" id="v-metodo" role="tabpanel">
+  <h2 class="find">Cómo se calcula cada cifra</h2>
+  <div class="card"><div class="tw"><table id="m-tab"></table></div></div>
+</section>
+
+</main>
+<div class="wrap"><footer id="foot"></footer></div>
+
+<script>
+const DATA = {
+ "actualizado": "12/11/2026",
+ "semanas": [
+  {
+   "label": "14–20 sep",
+   "ini": "2026-09-14",
+   "fin": "2026-09-20",
+   "dh": 5,
+   "dProd": 5.33,
+   "vProd": 6.83,
+   "dHoras": 95,
+   "vHoras": 48,
+   "comp": 9,
+   "ciclo": 11.1,
+   "brecha": 8.2,
+   "llegadas": null
+  },
+  {
+   "label": "21–27 sep",
+   "ini": "2026-09-21",
+   "fin": "2026-09-27",
+   "dh": 5,
+   "dProd": 9.33,
+   "vProd": 14.17,
+   "dHoras": 163,
+   "vHoras": 102,
+   "comp": 11,
+   "ciclo": 6.0,
+   "brecha": 2.1,
+   "llegadas": null
+  },
+  {
+   "label": "28 sep–4 oct",
+   "ini": "2026-09-28",
+   "fin": "2026-10-04",
+   "dh": 5,
+   "dProd": 7.99,
+   "vProd": 13.08,
+   "dHoras": 142,
+   "vHoras": 94,
+   "comp": 10,
+   "ciclo": 5.6,
+   "brecha": 3.7,
+   "llegadas": 7
+  },
+  {
+   "label": "5–11 oct",
+   "ini": "2026-10-05",
+   "fin": "2026-10-11",
+   "dh": 5,
+   "dProd": 8.42,
+   "vProd": 5.0,
+   "dHoras": 125,
+   "vHoras": 29,
+   "comp": 11,
+   "ciclo": 5.2,
+   "brecha": 4.5,
+   "llegadas": 2
+  },
+  {
+   "label": "12–18 oct",
+   "ini": "2026-10-12",
+   "fin": "2026-10-18",
+   "dh": 4,
+   "dProd": 6.27,
+   "vProd": 4.83,
+   "dHoras": 121,
+   "vHoras": 30,
+   "comp": 4,
+   "ciclo": 6.9,
+   "brecha": 4.0,
+   "llegadas": 12
+  },
+  {
+   "label": "19–25 oct",
+   "ini": "2026-10-19",
+   "fin": "2026-10-25",
+   "dh": 5,
+   "dProd": 10.17,
+   "vProd": 8.17,
+   "dHoras": 171,
+   "vHoras": 44,
+   "comp": 10,
+   "ciclo": 4.4,
+   "brecha": 0.9,
+   "llegadas": 8
+  },
+  {
+   "label": "26 oct–1 nov",
+   "ini": "2026-10-26",
+   "fin": "2026-11-01",
+   "dh": 5,
+   "dProd": 12.83,
+   "vProd": 13.5,
+   "dHoras": 231,
+   "vHoras": 57,
+   "comp": 14,
+   "ciclo": 4.8,
+   "brecha": 0.9,
+   "llegadas": 11
+  },
+  {
+   "label": "2–8 nov",
+   "ini": "2026-11-02",
+   "fin": "2026-11-08",
+   "dh": 4,
+   "dProd": 7.84,
+   "vProd": 9.5,
+   "dHoras": 142,
+   "vHoras": 71,
+   "comp": 10,
+   "ciclo": 2.9,
+   "brecha": 1.2,
+   "llegadas": null
+  },
+  {
+   "label": "9–11 nov",
+   "ini": "2026-11-09",
+   "fin": "2026-11-11",
+   "dh": 3,
+   "dProd": 6.58,
+   "vProd": 8.33,
+   "dHoras": 123,
+   "vHoras": 45,
+   "comp": 4,
+   "ciclo": 4.6,
+   "brecha": 1.3,
+   "llegadas": null
+  }
+ ],
+ "meses": {
+  "2026-10": {
+   "id": "2026-10",
+   "nombre": "Octubre 2026",
+   "mesCorto": "octubre",
+   "periodo": "1 al 31 de octubre de 2026",
+   "dh": 21,
+   "festivos": "12/10 (Colombia y España)",
+   "corte": "10/11/2026",
+   "kpi": {
+    "completadas": 40,
+    "prevCompletadas": 45,
+    "anticMed": 15,
+    "anticMin": 6,
+    "anticMax": 37,
+    "antic15": 23,
+    "antic8": 14,
+    "antic7": 3,
+    "dMeta": 45.33,
+    "dProd": 40.84,
+    "dCerr": 42,
+    "dHoras": 708.4,
+    "dHxM": 17.3,
+    "vMeta": 38,
+    "vProd": 29.52,
+    "vTot": 37.42,
+    "vCerr": 40,
+    "vHoras": 198.9,
+    "vHxM": 5.4,
+    "llegadas": 40,
+    "llegadasTarde": 32,
+    "atrasoMed": 10,
+    "atrasoMax": 28
+   },
+   "semanas": [
+    {
+     "label": "1–4 oct",
+     "dh": 2,
+     "dMeta": 4.67,
+     "dProd": 3.16,
+     "dHoras": 60.3,
+     "dCerr": 1,
+     "vMeta": 2,
+     "vProd": 2.33,
+     "vTot": 5.92,
+     "vHoras": 39.2,
+     "vCerr": 6,
+     "comp": 2
+    },
+    {
+     "label": "5–11 oct",
+     "dh": 5,
+     "dMeta": 9.67,
+     "dProd": 8.41,
+     "dHoras": 125.3,
+     "dCerr": 11,
+     "vMeta": 8,
+     "vProd": 3.19,
+     "vTot": 5.0,
+     "vHoras": 28.6,
+     "vCerr": 5,
+     "comp": 11
+    },
+    {
+     "label": "12–18 oct",
+     "dh": 4,
+     "dMeta": 8.0,
+     "dProd": 6.27,
+     "dHoras": 120.9,
+     "dCerr": 5,
+     "vMeta": 8,
+     "vProd": 4.67,
+     "vTot": 4.84,
+     "vHoras": 30.1,
+     "vCerr": 6,
+     "comp": 4
+    },
+    {
+     "label": "19–25 oct",
+     "dh": 5,
+     "dMeta": 11.33,
+     "dProd": 10.16,
+     "dHoras": 170.6,
+     "dCerr": 10,
+     "vMeta": 10,
+     "vProd": 8.16,
+     "vTot": 8.16,
+     "vHoras": 43.9,
+     "vCerr": 10,
+     "comp": 10
+    },
+    {
+     "label": "26–31 oct",
+     "dh": 5,
+     "dMeta": 11.67,
+     "dProd": 12.84,
+     "dHoras": 231.2,
+     "dCerr": 15,
+     "vMeta": 10,
+     "vProd": 11.17,
+     "vTot": 13.5,
+     "vHoras": 57.1,
+     "vCerr": 13,
+     "comp": 13
+    }
+   ],
+   "porLote": [
+    {
+     "lan": "2026-10-12",
+     "n": 1,
+     "antic": 10
+    },
+    {
+     "lan": "2026-10-14",
+     "n": 5,
+     "antic": 7
+    },
+    {
+     "lan": "2026-10-21",
+     "n": 5,
+     "antic": 12
+    },
+    {
+     "lan": "2026-11-01",
+     "n": 1,
+     "antic": 17
+    },
+    {
+     "lan": "2026-11-09",
+     "n": 2,
+     "antic": 25.0
+    },
+    {
+     "lan": "2026-11-11",
+     "n": 26,
+     "antic": 17.5
+    }
+   ],
+   "tipos": [
+    {
+     "tipo": "HTML",
+     "frente": "D",
+     "min": 90,
+     "ref": 89
+    },
+    {
+     "tipo": "Genially",
+     "frente": "D",
+     "min": 121,
+     "ref": 138
+    },
+    {
+     "tipo": "Imágenes",
+     "frente": "D",
+     "min": 43,
+     "ref": 54
+    },
+    {
+     "tipo": "Infografía",
+     "frente": "D",
+     "min": 50,
+     "ref": 44
+    },
+    {
+     "tipo": "Banner",
+     "frente": "D",
+     "min": 15,
+     "ref": 16
+    },
+    {
+     "tipo": "Video de clase",
+     "frente": "V",
+     "min": 77,
+     "ref": 105
+    },
+    {
+     "tipo": "Video intro",
+     "frente": "V",
+     "min": 74,
+     "ref": 105
+    },
+    {
+     "tipo": "Video profesor",
+     "frente": "V",
+     "min": 13,
+     "ref": 17
+    },
+    {
+     "tipo": "Genially RDA",
+     "frente": "V",
+     "min": 11,
+     "ref": 21
+    }
+   ],
+   "llegadas": [
+    {
+     "materia": "Gestión de Riesgos e Impactos Ambientales",
+     "programa": "Gestión de Riesgos",
+     "lan": "2026-12-02",
+     "debia": "2026-10-13",
+     "llego": "2026-10-01",
+     "atraso": -12
+    },
+    {
+     "materia": "Riesgos del trabajo",
+     "programa": "Derecho Laboral",
+     "lan": "2026-11-11",
+     "debia": "2026-09-22",
+     "llego": "2026-10-02",
+     "atraso": 10
+    },
+    {
+     "materia": "Analítica de entornos web y Apps",
+     "programa": "Inteligencia de negocios y comportamiento del consumidor",
+     "lan": "2026-11-11",
+     "debia": "2026-09-22",
+     "llego": "2026-10-02",
+     "atraso": 10
+    },
+    {
+     "materia": "Teoría y práctica de los derechos fundamentales",
+     "programa": "Derecho Constitucional",
+     "lan": "2026-11-11",
+     "debia": "2026-09-21",
+     "llego": "2026-10-02",
+     "atraso": 11
+    },
+    {
+     "materia": "Protección de datos en el ámbito público",
+     "programa": "Protección de Datos",
+     "lan": "2026-11-11",
+     "debia": "2026-09-21",
+     "llego": "2026-10-02",
+     "atraso": 11
+    },
+    {
+     "materia": "Computación Bioinspirada",
+     "programa": "Inteligencia Artificial Aplicada",
+     "lan": "2026-11-11",
+     "debia": "2026-09-22",
+     "llego": "2026-10-02",
+     "atraso": 10
+    },
+    {
+     "materia": "Aspectos legales",
+     "programa": "Gestión de Proyectos",
+     "lan": "2026-11-11",
+     "debia": "2026-09-22",
+     "llego": "2026-10-02",
+     "atraso": 10
+    },
+    {
+     "materia": "SCRUM",
+     "programa": "Gestión de Proyectos",
+     "lan": "2026-11-11",
+     "debia": "2026-09-22",
+     "llego": "2026-10-05",
+     "atraso": 13
+    },
+    {
+     "materia": "Finanzas y Gestión Comercial Automotriz",
+     "programa": "Ingeniería Automotriz",
+     "lan": "2026-11-30",
+     "debia": "2026-10-10",
+     "llego": "2026-10-07",
+     "atraso": -3
+    },
+    {
+     "materia": "Ingeniería y Arquitectura de Datos Modernas",
+     "programa": "Ciencia de Datos y Máquinas de Aprendizaje",
+     "lan": "2026-12-02",
+     "debia": "2026-10-13",
+     "llego": "2026-10-12",
+     "atraso": -1
+    },
+    {
+     "materia": "Machine Learning No Supervisado y Análisis Multivariante",
+     "programa": "Ciencia de Datos y Máquinas de Aprendizaje",
+     "lan": "2026-11-11",
+     "debia": "2026-09-22",
+     "llego": "2026-10-12",
+     "atraso": 20
+    },
+    {
+     "materia": "Turismo Sostenible y Desarrollo Territorial",
+     "programa": "Turismo",
+     "lan": "2026-12-02",
+     "debia": "2026-10-13",
+     "llego": "2026-10-13",
+     "atraso": 0
+    },
+    {
+     "materia": "Gestión del Riesgo Financiero",
+     "programa": "Finanzas Corporativas",
+     "lan": "2026-12-02",
+     "debia": "2026-10-13",
+     "llego": "2026-10-13",
+     "atraso": 0
+    },
+    {
+     "materia": "Marketing estratégico y el consumidor contemporáneo",
+     "programa": "Marketing y Comunicación",
+     "lan": "2026-12-02",
+     "debia": "2026-10-13",
+     "llego": "2026-10-13",
+     "atraso": 0
+    },
+    {
+     "materia": "Cloud Computing para IA y Ciencia de Datos",
+     "programa": "Ciencia de Datos y Máquinas de Aprendizaje",
+     "lan": "2026-12-02",
+     "debia": "2026-10-13",
+     "llego": "2026-10-14",
+     "atraso": 1
+    },
+    {
+     "materia": "Dirección Financiera de Empresas de Seguros",
+     "programa": "Gestión Integral de Seguros",
+     "lan": "2026-12-02",
+     "debia": "2026-10-13",
+     "llego": "2026-10-14",
+     "atraso": 1
+    },
+    {
+     "materia": "Gobernanza Digital en la ciudad inteligente",
+     "programa": "Planificación y Diseño Urbano",
+     "lan": "2026-12-02",
+     "debia": "2026-10-13",
+     "llego": "2026-10-15",
+     "atraso": 2
+    },
+    {
+     "materia": "Sistemas de información en salud",
+     "programa": "Gerencia en Salud",
+     "lan": "2026-12-02",
+     "debia": "2026-10-13",
+     "llego": "2026-10-16",
+     "atraso": 3
+    },
+    {
+     "materia": "Gestión Ambiental organizacional",
+     "programa": "Desarrollo Sostenible y RSO",
+     "lan": "2026-12-02",
+     "debia": "2026-10-13",
+     "llego": "2026-10-16",
+     "atraso": 3
+    },
+    {
+     "materia": "Órganos y procesos de la justicia constitucional",
+     "programa": "Derecho Constitucional",
+     "lan": "2026-12-02",
+     "debia": "2026-10-12",
+     "llego": "2026-10-16",
+     "atraso": 4
+    },
+    {
+     "materia": "Energía de la biomasa",
+     "programa": "Energías Renovables",
+     "lan": "2026-12-02",
+     "debia": "2026-10-13",
+     "llego": "2026-10-16",
+     "atraso": 3
+    },
+    {
+     "materia": "Epidemiología de las Enfermedades Transmisibles y No transmisibles",
+     "programa": "Salud Pública",
+     "lan": "2026-12-02",
+     "debia": "2026-10-13",
+     "llego": "2026-10-19",
+     "atraso": 6
+    },
+    {
+     "materia": "Herramientas de coaching para la gestión de personas",
+     "programa": "Gestión del Talento Humano",
+     "lan": "2026-12-02",
+     "debia": "2026-10-13",
+     "llego": "2026-10-19",
+     "atraso": 6
+    },
+    {
+     "materia": "Auditoría y evaluación",
+     "programa": "Gerencia de la calidad e Innovación",
+     "lan": "2026-12-02",
+     "debia": "2026-10-13",
+     "llego": "2026-10-19",
+     "atraso": 6
+    },
+    {
+     "materia": "Estado y Desarrollo",
+     "programa": "Gestión Pública",
+     "lan": "2026-11-11",
+     "debia": "2026-09-22",
+     "llego": "2026-10-19",
+     "atraso": 27
+    },
+    {
+     "materia": "HR Analytics y herramientas de Gestión",
+     "programa": "Gestión del Talento Humano",
+     "lan": "2026-11-11",
+     "debia": "2026-09-22",
+     "llego": "2026-10-20",
+     "atraso": 28
+    },
+    {
+     "materia": "Administración de recursos y eficiencia en la gestión del estado",
+     "programa": "Gestión Pública",
+     "lan": "2026-12-02",
+     "debia": "2026-10-13",
+     "llego": "2026-10-22",
+     "atraso": 9
+    },
+    {
+     "materia": "Entorno Económico Internacional y Mercados Financieros",
+     "programa": "Dirección Financiera (Mercados Internacionales)",
+     "lan": "2026-12-02",
+     "debia": "2026-10-13",
+     "llego": "2026-10-22",
+     "atraso": 9
+    },
+    {
+     "materia": "Marketing de contenidos",
+     "programa": "Mercadotecnia estratégica digital",
+     "lan": "2026-12-02",
+     "debia": "2026-10-13",
+     "llego": "2026-10-23",
+     "atraso": 10
+    },
+    {
+     "materia": "Currículo y planificación",
+     "programa": "Educación Básica",
+     "lan": "2026-12-02",
+     "debia": "2026-10-12",
+     "llego": "2026-10-26",
+     "atraso": 14
+    },
+    {
+     "materia": "Protección de datos en el ámbito privado",
+     "programa": "Protección de Datos",
+     "lan": "2026-12-02",
+     "debia": "2026-10-12",
+     "llego": "2026-10-26",
+     "atraso": 14
+    },
+    {
+     "materia": "IA Generativa y Sistemas Multimodales",
+     "programa": "Inteligencia Artificial Aplicada",
+     "lan": "2026-12-02",
+     "debia": "2026-10-13",
+     "llego": "2026-10-26",
+     "atraso": 13
+    },
+    {
+     "materia": "Aplicaciones de la inteligencia de negocios",
+     "programa": "Inteligencia de negocios y comportamiento del consumidor",
+     "lan": "2026-12-02",
+     "debia": "2026-10-13",
+     "llego": "2026-10-26",
+     "atraso": 13
+    },
+    {
+     "materia": "Inteligencia de Negocios para la Cadena de Suministro",
+     "programa": "Gestión Estratégica de la Cadena de Suministro",
+     "lan": "2027-01-13",
+     "debia": "2026-11-15",
+     "llego": "2026-10-27",
+     "atraso": -19
+    },
+    {
+     "materia": "Infraestructuras en seguridad vial",
+     "programa": "Gestión del Transporte",
+     "lan": "2026-12-02",
+     "debia": "2026-10-13",
+     "llego": "2026-10-28",
+     "atraso": 15
+    },
+    {
+     "materia": "Seguridad Blockchain y Smart Contracts",
+     "programa": "Ciberseguridad",
+     "lan": "2026-12-02",
+     "debia": "2026-10-13",
+     "llego": "2026-10-28",
+     "atraso": 15
+    },
+    {
+     "materia": "Marketing y Patrocinio Deportivo",
+     "programa": "Gestión Deportiva",
+     "lan": "2027-01-11",
+     "debia": "2026-11-15",
+     "llego": "2026-10-28",
+     "atraso": -18
+    },
+    {
+     "materia": "Estrategia y dirección publicitaria",
+     "programa": "Dirección Publicitaria y Creativa",
+     "lan": "2026-12-02",
+     "debia": "2026-10-13",
+     "llego": "2026-10-29",
+     "atraso": 16
+    },
+    {
+     "materia": "Gestión de Almacenamiento y Despacho",
+     "programa": "Gestión Estratégica de la Cadena de Suministro",
+     "lan": "2026-12-02",
+     "debia": "2026-10-13",
+     "llego": "2026-10-30",
+     "atraso": 17
+    },
+    {
+     "materia": "Documentología",
+     "programa": "Criminalística",
+     "lan": "2026-12-02",
+     "debia": "2026-10-13",
+     "llego": "2026-10-30",
+     "atraso": 17
+    }
+   ],
+   "calidad": {
+    "revision": [
+     {
+      "label": "12–18 oct",
+      "revisadas": 7,
+      "sin": 5,
+      "con": 1,
+      "externo": 1,
+      "dias": 3.9
+     },
+     {
+      "label": "19–25 oct",
+      "revisadas": 8,
+      "sin": 3,
+      "con": 5,
+      "externo": 0,
+      "dias": 1.1
+     },
+     {
+      "label": "26 oct–1 nov",
+      "revisadas": 12,
+      "sin": 7,
+      "con": 5,
+      "externo": 0,
+      "dias": 1.4
+     }
+    ],
+    "errores": [
+     [
+      "Títulos, cabeceras o índices",
+      6
+     ],
+     [
+      "Material que falta o mal ubicado",
+      4
+     ],
+     [
+      "Canvas, HTML o Genially desordenados",
+      4
+     ],
+     [
+      "Contenido de otra materia",
+      3
+     ],
+     [
+      "Restos de IA o notas de trabajo",
+      3
+     ],
+     [
+      "Texto cortado, repetido o erratas",
+      3
+     ],
+     [
+      "Enlaces o embebidos incompletos",
+      2
+     ]
+    ],
+    "conAjustesTotal": 11,
+    "revisadasTotal": 27,
+    "incidencias": {
+     "semanas": [
+      [
+       "28 sep–4 oct",
+       9
+      ],
+      [
+       "5–11 oct",
+       14
+      ],
+      [
+       "12–18 oct",
+       20
+      ],
+      [
+       "19–25 oct",
+       11
+      ],
+      [
+       "26 oct–1 nov",
+       19
+      ],
+      [
+       "2–8 nov",
+       9
+      ]
+     ],
+     "tipos": [
+      [
+       "Fábrica",
+       54
+      ],
+      [
+       "Instruccional",
+       17
+      ],
+      [
+       "Cambio en matriz",
+       13
+      ],
+      [
+       "Otros",
+       1
+      ]
+     ],
+     "total": 85,
+     "solventadas": 85,
+     "diasMedios": 1.0
+    }
+   },
+   "proyeccion": {
+    "mes": "Noviembre 2026",
+    "periodo": "2 al 30 de noviembre de 2026",
+    "dh": 19,
+    "festivos": "2/11 y 16/11 (Colombia); en Canarias el 2/11 sí es festivo y el 16/11 no",
+    "capacidad": [
+     {
+      "p": "Diseño",
+      "dias": 19,
+      "n": 5,
+      "nota": "5 diseñadores sin ausencias"
+     },
+     {
+      "p": "Diseño",
+      "dias": 12,
+      "n": 1,
+      "nota": "Vacaciones 20–30/11"
+     },
+     {
+      "p": "Diseño",
+      "dias": 15,
+      "n": 1,
+      "nota": "Vacaciones 9–13/11; calendario de Canarias"
+     }
+    ],
+    "capD": 40.67,
+    "capV": 56,
+    "lotes": [
+     {
+      "lote": "11/11",
+      "materias": 32,
+      "abiertas": 6,
+      "porIngresar": 0,
+      "fD": 3.16,
+      "fV": 3.84,
+      "fecha": "Jue 5/11",
+      "real": true
+     },
+     {
+      "lote": "30/11",
+      "materias": 2,
+      "abiertas": 2,
+      "porIngresar": 0,
+      "fD": 1.84,
+      "fV": 1.0,
+      "fecha": "Vie 6/11",
+      "real": true
+     },
+     {
+      "lote": "2/12",
+      "materias": 33,
+      "abiertas": 29,
+      "porIngresar": 4,
+      "fD": 33,
+      "fV": 33,
+      "fecha": "Vie 27/11",
+      "real": false,
+      "fechaD": "Vie 27/11",
+      "fechaV": "Vie 20/11"
+     },
+     {
+      "lote": "Enero (11 y 13/1)",
+      "materias": 31,
+      "abiertas": 2,
+      "porIngresar": 29,
+      "fD": 31,
+      "fV": 31,
+      "fecha": "Diciembre",
+      "real": false,
+      "fechaD": "Diciembre",
+      "fechaV": "Lun 7/12"
+     }
+    ],
+    "necesidad": 38.0,
+    "necesidadV": 37.84,
+    "esperadasMes": 41,
+    "diario": {
+     "fechas": [
+      "31/10",
+      "3/11",
+      "4/11",
+      "5/11",
+      "6/11",
+      "9/11",
+      "10/11",
+      "11/11",
+      "12/11",
+      "13/11",
+      "16/11",
+      "17/11",
+      "18/11",
+      "19/11",
+      "20/11",
+      "23/11",
+      "24/11",
+      "25/11",
+      "26/11",
+      "27/11",
+      "30/11"
+     ],
+     "dProj": [
+      0,
+      2.33,
+      4.67,
+      7.0,
+      9.33,
+      11.33,
+      13.33,
+      15.33,
+      17.33,
+      19.33,
+      19.67,
+      22.0,
+      24.33,
+      26.67,
+      28.67,
+      30.67,
+      32.67,
+      34.67,
+      36.67,
+      38.67,
+      40.67
+     ],
+     "vProj": [
+      0,
+      2,
+      5,
+      8,
+      11,
+      14,
+      17,
+      20,
+      23,
+      26,
+      26,
+      29,
+      32,
+      35,
+      38,
+      41,
+      44,
+      47,
+      50,
+      53,
+      56
+     ],
+     "dReal": [
+      0,
+      1.31,
+      3.7,
+      6.59,
+      7.84,
+      9.92,
+      12.75,
+      14.42
+     ],
+     "vReal": [
+      0,
+      1.67,
+      3.67,
+      7.0,
+      9.5,
+      11.67,
+      14.84,
+      17.84
+     ]
+    }
+   },
+   "seguimiento": {
+    "corte": "11/11/2026",
+    "diasTranscurridos": 7,
+    "diasTotales": 19,
+    "dReal": 14.42,
+    "dProj": 15.33,
+    "vReal": 17.84,
+    "vProj": 20.0,
+    "dFalta": 23.58,
+    "vFalta": 20.0,
+    "dCapRestante": 23.33,
+    "ritmoNecesarioD": 1.011,
+    "semanas": [
+     {
+      "label": "2–8 nov",
+      "dias": 4,
+      "dProj": 9.33,
+      "dReal": 7.84,
+      "vProj": 11,
+      "vReal": 9.5
+     },
+     {
+      "label": "9–11 nov",
+      "dias": 3,
+      "dProj": 6,
+      "dReal": 6.58,
+      "vProj": 9,
+      "vReal": 8.33
+     }
+    ],
+    "completasMes": 15,
+    "completasEsperadas": 41,
+    "lote212": {
+     "total": 33,
+     "completas": 7,
+     "produccion": 8,
+     "espera": 15,
+     "porIngresar": 1
+    },
+    "loteEnero": {
+     "total": 31,
+     "recibidas": 14,
+     "faltan": 17
+    }
+   }
+  }
+ }
+};
+</script>
+<script>
+(function(){
+const $=s=>document.querySelector(s);
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const fmt=(x,d=1)=>x==null?'—':Number(x).toLocaleString('es-CO',{minimumFractionDigits:d,maximumFractionDigits:d});
+const pct=x=>Math.round(x*100)+' %';
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const charts={};
+let M=null, S=DATA.semanas;
+const sel=$('#mes');
+Object.keys(DATA.meses).sort().reverse().forEach(k=>{const o=document.createElement('option');o.value=k;o.textContent=DATA.meses[k].nombre;sel.appendChild(o)});
+
+function C(){return{ink:css('--ink'),ink2:css('--ink2'),ink3:css('--ink3'),line:css('--line'),dis:css('--dis'),vid:css('--vid'),meta:css('--meta'),ok:css('--ok'),warn:css('--warn'),bad:css('--bad'),brand:css('--brand'),surface:css('--surface'),canvas:css('--canvas')}}
+function base(c){
+  Chart.defaults.font.family='Poppins, "Segoe UI", Roboto, Arial, sans-serif';
+  Chart.defaults.font.size=12; Chart.defaults.color=c.ink2; Chart.defaults.borderColor=c.line;
+  Chart.defaults.animation=reduce?false:{duration:700};
+  Chart.defaults.plugins.legend.display=false; Chart.defaults.scales.linear.grace='10%';
+  Chart.defaults.plugins.tooltip.backgroundColor=c.ink; Chart.defaults.plugins.tooltip.titleColor=c.surface; Chart.defaults.plugins.tooltip.bodyColor=c.surface;
+  Chart.defaults.plugins.tooltip.padding=10; Chart.defaults.plugins.tooltip.cornerRadius=8;
+}
+// plugin: banda "antes" y etiquetas de valor
+const band={id:'band',beforeDraw(ch,a,o){if(!o||o.to==null)return;const {ctx,chartArea:ca,scales:{x}}=ch;const x0=x.getPixelForValue(o.from)-((x.getPixelForValue(1)-x.getPixelForValue(0))/2);const x1=x.getPixelForValue(o.to)+((x.getPixelForValue(1)-x.getPixelForValue(0))/2);ctx.save();ctx.fillStyle=o.color;ctx.fillRect(Math.max(x0,ca.left),ca.top,Math.min(x1,ca.right)-Math.max(x0,ca.left),ca.bottom-ca.top);if(o.label){ctx.fillStyle=o.text;ctx.font='500 11px Poppins, sans-serif';ctx.fillText(o.label,Math.max(x0,ca.left)+6,ca.top+14)}if(o.label2){ctx.fillText(o.label2,Math.min(x1,ca.right)+6,ca.top+14)}ctx.restore()}};
+const vlabels={id:'vlabels',afterDatasetsDraw(ch,a,o){if(!o||!o.on)return;const {ctx}=ch;ctx.save();ctx.font='600 11px Poppins, sans-serif';ctx.fillStyle=o.color;ctx.textAlign='center';(o.sets||[0]).forEach(di=>{const meta=ch.getDatasetMeta(di);if(meta.hidden)return;meta.data.forEach((el,i)=>{const v=ch.data.datasets[di].data[i];if(v==null)return;const t=o.fmt?o.fmt(v):v;const p=el.tooltipPosition();if(o.horizontal){ctx.textAlign='left';ctx.fillText(t,p.x+6,p.y+4)}else ctx.fillText(t,p.x,p.y-6)})});ctx.restore()}};
+const hline={id:'hline',afterDraw(ch,a,o){if(!o||o.y==null)return;const {ctx,chartArea:ca,scales:{y}}=ch;const py=y.getPixelForValue(o.y);ctx.save();ctx.strokeStyle=o.color;ctx.setLineDash([5,4]);ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(ca.left,py);ctx.lineTo(ca.right,py);ctx.stroke();if(o.label){ctx.setLineDash([]);ctx.fillStyle=o.color;ctx.font='500 11px Poppins, sans-serif';ctx.textAlign='left';ctx.fillText(o.label,ca.left+4,py-6)}ctx.restore()}};
+Chart.register(band,vlabels,hline);
+function mk(id,cfg){if(charts[id])charts[id].destroy();const el=document.getElementById(id);if(!el)return;charts[id]=new Chart(el,cfg);return charts[id]}
+function kpi(v,l,d,cls,barPct,barColor){return `<div class="card kpi"><span class="v">${v}</span><span class="l">${l}</span>${d?`<span class="d ${cls||''}">${d}</span>`:''}${barPct!=null?`<div class="bar"><i style="width:${Math.min(100,barPct*100)}%;background:${barColor}"></i></div>`:''}</div>`}
+function acts(list){return list.map(a=>`<div class="act"><span class="tag ${a.t}">${a.f}</span><div><div class="q">${a.q}</div><div class="dato">${a.d}</div></div><div class="acc">${a.a}</div></div>`).join('')}
+function sc(p){return p>=1?'ok':p>=.85?'warn':'bad'}
+function countUp(el,to,suffixHTML){if(reduce){el.innerHTML=to+suffixHTML;return}let t0=null;const dur=900;function f(ts){if(!t0)t0=ts;const k=Math.min(1,(ts-t0)/dur);const e=1-Math.pow(1-k,3);el.innerHTML=Math.round(to*e)+suffixHTML;if(k<1)requestAnimationFrame(f)}requestAnimationFrame(f)}
+
+// ---------- texto por mes ----------
+function textos(m){
+  const k=m.kpi,s=m.seguimiento,p=m.proyeccion;
+  const dP=k.dProd/k.dMeta, vP=k.vProd/k.vMeta;
+  return {
+    lede:`Todas salieron antes de su lanzamiento, con ${k.anticMed} días de anticipación (mediana) y un mínimo de ${k.anticMin}. Diseño cerró al ${pct(dP)} de su meta y las editoras de video al ${pct(vP)}; las dos cerraron la última semana por encima de la meta.`,
+    mejoro:[
+      ['Ciclo por materia','de 6,7 a 4,3 días (mediana), y 2,9 días en la semana del 2/11'],
+      ['Diseño y video a la vez','la diferencia entre el fin de un frente y el otro bajó de 4–8 días a ≈1 día'],
+      ['Ritmo de diseño','de 1,55 a 2,06 materias por día hábil (+33 %)'],
+      ['Margen mínimo','ninguna materia salió con menos de 6 días antes del lanzamiento (antes: 0)'],
+      ['Registros limpios','sesiones descartadas del 27 % al 2 %; cargas manuales a 0'],
+    ],
+    noMejoro:[
+      ['Materias completas por semana','≈10, igual que en septiembre: dependen de lo que llega'],
+      ['Horas por materia en diseño',`${fmt(k.dHxM)} h: el avance vino del flujo y de más horas, no de piezas más rápidas`],
+      ['Calidad interna','41,7 % de materias con ajustes la última semana (meta: 0 %)'],
+      ['Llegada desde instruccional',`${k.llegadasTarde} de ${k.llegadas} llegaron tarde (mediana ${k.atrasoMed} días)`],
+    ],
+    sigue:[
+      ['Lote 2/12 el viernes 27/11','diseño necesita el 101 % de su meta desde el 12/11; la semana del 9/11 va al 110 %'],
+      ['Calidad hacia 0 errores','verificar cabeceras, índices y plantillas antes de cerrar'],
+      ['Diseño a 15 h por materia','estandarizar Genially y HTML con el método más rápido validado'],
+      ['Fecha firme de llegada','17 materias del lote de enero aún no llegan'],
+    ],
+    acciones:{
+      dis:[
+        {t:'dis',f:'Diseño',q:'Las horas por materia no bajan',d:`${fmt(k.dHxM)} h por materia producida en octubre. Genially va a 121 min por pieza y HTML a 90; entre personas el Genially va de 61 a 164 min.`,a:'<b>Estandarizar el método</b> de Genially y HTML a partir de quien lo hace más rápido con calidad validada. Meta: 15 h por materia.'},
+        {t:'dis',f:'Diseño',q:'Las semanas con ausencias caen',d:'La semana del 1/10 quedó al 68 % y la del 12/10 al 78 % (festivo y vacaciones).',a:'<b>Registrar las vacaciones en la hoja Equipo</b> con 2 semanas de anticipación para que la proyección las incluya y no coincidan en el mismo lote.'},
+        {t:'dis',f:'Diseño',q:'Timers en paralelo',d:'87 timers simultáneos entre el 12/10 y el 10/11: ≈68 h contadas dos veces.',a:'<b>Un timer a la vez.</b> Al cambiar de pieza, pausar la anterior.'},
+      ],
+      vid:[
+        {t:'vid',f:'Video',q:'Video aún no sostiene la meta todas las semanas',d:`Las editoras cerraron octubre al ${pct(vP)}; la última semana, al 112 %. En noviembre: 86 % (2–8/11) y 93 % (9–11/11).`,a:'<b>Sostener 6 videos por día por editora</b> (1 materia). Seguimiento cada lunes en este informe.'},
+        {t:'vid',f:'Video',q:'Más capacidad desde el 4/11',d:'Con 3 editoras, video pasó de 2 a 3 materias de capacidad por día hábil.',a:'<b>Usar el margen para adelantar el lote de enero</b> en cuanto lleguen sus materias, sin bajar la revisión de calidad.'},
+      ],
+      cal:[
+        {t:'cal',f:'Calidad',q:'Títulos y cabeceras que no corresponden',d:'6 de las 11 materias con ajustes. Ej.: un Canvas que nombraba otra clase.',a:'<b>Verificar cabeceras e índices</b> en la vista previa del Canvas antes de marcar el cierre.'},
+        {t:'cal',f:'Calidad',q:'Plantillas y restos de trabajo',d:'3 de 11 con contenido de otra materia y 3 de 11 con restos de IA o notas.',a:'<b>Limpiar la plantilla</b> al empezar y buscar textos de relleno antes de subir.'},
+        {t:'cal',f:'Calidad',q:'Material que falta o mal ubicado',d:'4 de 11 materias.',a:'<b>Subir cada pieza a su carpeta al terminarla</b> y marcar el checklist en ese momento.'},
+      ],
+      ent:[
+        {t:'ent',f:'Entrada',q:'Las materias llegan tarde',d:`${k.llegadasTarde} de ${k.llegadas} en octubre, con ${k.atrasoMed} días de atraso (mediana). Lote 11/11: 10 de 10 tarde.`,a:'<b>Acordar con instruccional una fecha firme</b> por lote y avisar a la fábrica cada martes cuántas llegan esa semana.'},
+        {t:'ent',f:'Entrada',q:'Lote de enero',d:'14 de 31 recibidas al 12/11; el Cronograma pide entregarlas entre el 2 y el 5/12.',a:'<b>Confirmar la fecha de llegada de las 17 restantes</b> para proyectar diciembre con datos reales.'},
+      ],
+      pro:[
+        {t:'pro',f:'Proyección',q:'Lote 2/12 el viernes 27/11',d:`Al ${s.corte} faltan ${fmt(s.dFalta)} materias de diseño y hay ${fmt(s.dCapRestante)} de capacidad a la meta hasta el 27/11.`,a:`<b>Diseño al ${Math.round(s.ritmoNecesarioD*100)} % de su meta</b> desde el 12/11. La semana del 9/11 va al 110 %: mantener ese ritmo.`},
+        {t:'pro',f:'Proyección',q:'Semana del 23/11 con 6 diseñadores',d:'Vacaciones del 20 al 30/11 en diseño; del 9 al 13/11 en otra persona.',a:'<b>Llegar al 20/11 con ≥ 28,7 materias</b> producidas desde el 1/11 (meta acumulada).'},
+        {t:'pro',f:'Proyección',q:'Video termina antes',d:`Faltan ${fmt(s.vFalta)} materias de video; a la meta termina el 23/11.`,a:'<b>Al terminar el lote 2/12, video sigue con enero</b> según llegue a la fábrica.'},
+      ]
+    },
+    why:[
+      'Las materias completas por semana siguen en ≈10 porque dependen de cuántas llegan, no de la velocidad de la fábrica.',
+      'Todas las materias que salieron desde el 19/10 ingresaron tarde, y eso mantiene las alertas del dashboard en rojo.',
+      'El promedio del mes (90 % en diseño) esconde la tendencia: la última semana de octubre estuvo al 110 %.',
+      'La «velocidad promedio» del dashboard cuenta días calendario, con fines de semana y festivos.'
+    ]
+  };
+}
+
+function render(){
+  const c=C(); base(c); M=DATA.meses[sel.value]; const T=textos(M); const k=M.kpi;
+  $('#hdrsub').textContent=`${M.nombre} · corte ${M.corte} · ${M.dh} días hábiles`;
+  countUp($('#h-num'),k.completadas,'<small>materias completas en '+M.mesCorto+'</small>');
+  $('#h-lede').textContent=T.lede;
+  // anticipación
+  mk('c-antic',{type:'bar',data:{labels:['7 días o menos','8 a 14 días','15 días o más'],datasets:[{data:[k.antic7,k.antic8,k.antic15],backgroundColor:[c.warn,c.dis,c.ok],borderRadius:6,maxBarThickness:70}]},options:{maintainAspectRatio:false,scales:{y:{beginAtZero:true,grid:{color:c.line},ticks:{precision:0}},x:{grid:{display:false}}},plugins:{vlabels:{on:true,color:c.ink},tooltip:{callbacks:{label:t=>`${t.raw} materias`}}}}});
+  const dP=k.dProd/k.dMeta, vP=k.vProd/k.vMeta;
+  $('#kpis').innerHTML=[
+    kpi(pct(dP),'Diseño frente a su meta',`${fmt(k.dProd)} de ${fmt(k.dMeta)} materias`,'',dP,c.dis),
+    kpi(pct(vP),'Video (editoras) frente a su meta',`${fmt(k.vProd)} de ${k.vMeta}; con apoyo, ${fmt(k.vTot)}`,'',vP,c.vid),
+    kpi('4,3 días','De la primera sesión a materia completa','antes del 12/10: 6,7 días','up'),
+    kpi('≈1 día','Entre el fin de diseño y el de video','antes del 12/10: 4–8 días','up'),
+  ].join('');
+  const col=(color,title,items)=>`<div class="card col"><h3><i class="dot" style="background:${color}"></i>${title}</h3><ul>${items.map(i=>`<li><b>${i[0]}:</b> ${i[1]}</li>`).join('')}</ul></div>`;
+  $('#trio').innerHTML=col(c.ok,'Lo que mejoró',T.mejoro)+col(c.bad,'Lo que no mejoró',T.noMejoro)+col(c.brand,'Lo que sigue',T.sigue);
+  $('#acts-res').innerHTML=acts([T.acciones.pro[0],T.acciones.dis[0],T.acciones.cal[0],T.acciones.ent[0],T.acciones.vid[0]]);
+
+  // ANTES Y DESPUES
+  const L=S.map(s=>s.label); const bandOpt={from:0,to:3,color:c.canvas,text:c.ink3,label:'Antes del 12/10'};
+  const lineCfg=(data,color,yTitle,decimals=1)=>({type:'line',data:{labels:L,datasets:[{data,borderColor:color,backgroundColor:color,pointRadius:4,pointHoverRadius:6,tension:.3,borderWidth:2.5}]},options:{maintainAspectRatio:false,scales:{y:{beginAtZero:true,grid:{color:c.line},title:{display:!!yTitle,text:yTitle}},x:{grid:{display:false},ticks:{maxRotation:45,minRotation:45,font:{size:11}}}},plugins:{band:bandOpt,vlabels:{on:true,color:c.ink2,fmt:v=>fmt(v,decimals)},tooltip:{callbacks:{label:t=>fmt(t.raw,decimals)}}}}});
+  mk('c-ciclo',lineCfg(S.map(s=>s.ciclo),c.brand,'días'));
+  mk('c-brecha',lineCfg(S.map(s=>s.brecha),c.brand,'días'));
+  mk('c-dpd',lineCfg(S.map(s=>+(s.dProd/s.dh).toFixed(2)),c.dis,'materias por día',2));
+  mk('c-vpd',lineCfg(S.map(s=>+(s.vProd/s.dh).toFixed(2)),c.vid,'materias por día',2));
+  $('#why-list').innerHTML=T.why.map(w=>`<li>${w}</li>`).join('');
+  const SL=S.filter(s=>s.llegadas!=null);
+  mk('c-lleg',{type:'bar',data:{labels:SL.map(s=>s.label),datasets:[{label:'Llegaron',data:SL.map(s=>s.llegadas),backgroundColor:c.meta,borderRadius:5},{label:'Completadas',data:SL.map(s=>s.comp),backgroundColor:c.brand,borderRadius:5}]},options:{maintainAspectRatio:false,plugins:{legend:{display:true,position:'top',align:'start',labels:{boxWidth:12,boxHeight:12}},vlabels:{on:true,sets:[0,1],color:c.ink2}},scales:{y:{beginAtZero:true,grid:{color:c.line},ticks:{precision:0}},x:{grid:{display:false}}}}});
+
+  // DISEÑO
+  const W=M.semanas;
+  $('#d-find').textContent=`Diseño cerró ${M.mesCorto} al ${pct(dP)} de su meta y terminó el mes al ${pct(W[W.length-1].dProd/W[W.length-1].dMeta)}`;
+  $('#d-sub').textContent=`Meta: 1 materia por diseñador cada 3 días hábiles disponibles, descontando vacaciones y festivos. Producción = entregables trabajados ÷ 12.`;
+  $('#d-kpis').innerHTML=[kpi(fmt(k.dProd),'Materias producidas',`meta ${fmt(k.dMeta)}`),kpi(k.dCerr,'Frentes de diseño cerrados'),kpi(fmt(k.dHoras,0)+' h','Horas registradas'),kpi(fmt(k.dHxM)+' h','Horas por materia producida','meta propuesta: 15 h','down')].join('');
+  const wl=W.map(w=>w.label);
+  mk('c-dsem',{type:'bar',data:{labels:wl,datasets:[{label:'Producción',data:W.map(w=>w.dProd),backgroundColor:c.dis,borderRadius:6,grouped:false,barPercentage:.55},{label:'Meta',data:W.map(w=>w.dMeta),backgroundColor:c.line,borderRadius:6,grouped:false,barPercentage:.9}]},options:{maintainAspectRatio:false,scales:{y:{beginAtZero:true,grid:{color:c.line}},x:{grid:{display:false}}},plugins:{vlabels:{on:true,sets:[0],color:c.ink,fmt:v=>fmt(v)},tooltip:{callbacks:{label:t=>`${t.dataset.label}: ${fmt(t.raw,2)}`}}}}});
+  const dp=W.map(w=>Math.round(w.dProd/w.dMeta*100));
+  mk('c-dpct',{type:'bar',data:{labels:wl,datasets:[{data:dp,backgroundColor:dp.map(v=>v>=100?c.ok:v>=85?c.warn:c.bad),borderRadius:6,maxBarThickness:56}]},options:{maintainAspectRatio:false,scales:{y:{beginAtZero:true,suggestedMax:120,grid:{color:c.line},ticks:{callback:v=>v+' %'}},x:{grid:{display:false}}},plugins:{hline:{y:100,color:c.ink3,label:'meta'},vlabels:{on:true,color:c.ink,fmt:v=>v+' %'}}}});
+  const td=M.tipos.filter(t=>t.frente=='D');
+  mk('c-dtipos',{type:'bar',data:{labels:td.map(t=>t.tipo),datasets:[{label:'Octubre',data:td.map(t=>t.min),backgroundColor:td.map(t=>t.min<=t.ref?c.dis:c.warn),borderRadius:5,grouped:false,barPercentage:.5},{label:'Referencia',data:td.map(t=>t.ref),backgroundColor:c.line,borderRadius:5,grouped:false,barPercentage:.9}]},options:{indexAxis:'y',maintainAspectRatio:false,scales:{x:{beginAtZero:true,grid:{color:c.line},title:{display:true,text:'minutos por pieza'}},y:{grid:{display:false}}},plugins:{vlabels:{on:true,sets:[0],color:c.ink,horizontal:true,fmt:v=>v+' min'},tooltip:{callbacks:{label:t=>`${t.dataset.label}: ${t.raw} min`}}}}});
+  $('#acts-dis').innerHTML=acts(T.acciones.dis);
+
+  // VIDEO
+  $('#v-find').textContent=`Las editoras cerraron ${M.mesCorto} al ${pct(vP)} y la última semana superaron la meta (${pct(W[W.length-1].vProd/W[W.length-1].vMeta)})`;
+  $('#v-sub').textContent='Meta: 1 materia por editora por día hábil (6 videos). El apoyo de coordinación suma producción pero no tiene meta.';
+  $('#v-kpis').innerHTML=[kpi(fmt(k.vProd),'Materias producidas por las editoras',`meta ${k.vMeta}`),kpi(fmt(k.vTot),'Con apoyo de coordinación'),kpi(k.vCerr,'Frentes de video cerrados'),kpi(fmt(k.vHxM)+' h','Horas por frente cerrado')].join('');
+  mk('c-vsem',{type:'bar',data:{labels:wl,datasets:[{label:'Meta editoras',data:W.map(w=>w.vMeta),backgroundColor:c.line,borderRadius:6,stack:'m',barPercentage:.9},{label:'Editoras',data:W.map(w=>w.vProd),backgroundColor:c.vid,stack:'p',barPercentage:.55},{label:'Apoyo',data:W.map(w=>+(w.vTot-w.vProd).toFixed(2)),backgroundColor:c.meta,stack:'p',borderRadius:6,barPercentage:.55}]},options:{maintainAspectRatio:false,scales:{x:{stacked:true,grid:{display:false}},y:{stacked:true,beginAtZero:true,grid:{color:c.line}}},plugins:{tooltip:{callbacks:{label:t=>`${t.dataset.label}: ${fmt(t.raw,2)}`}}}}});
+  const vp=W.map(w=>Math.round(w.vProd/w.vMeta*100));
+  mk('c-vpct',{type:'bar',data:{labels:wl,datasets:[{data:vp,backgroundColor:vp.map(v=>v>=100?c.ok:v>=85?c.warn:c.bad),borderRadius:6,maxBarThickness:56}]},options:{maintainAspectRatio:false,scales:{y:{beginAtZero:true,suggestedMax:130,grid:{color:c.line},ticks:{callback:v=>v+' %'}},x:{grid:{display:false}}},plugins:{hline:{y:100,color:c.ink3,label:'meta'},vlabels:{on:true,color:c.ink,fmt:v=>v+' %'}}}});
+  const tv=M.tipos.filter(t=>t.frente=='V');
+  mk('c-vtipos',{type:'bar',data:{labels:tv.map(t=>t.tipo),datasets:[{label:'Octubre',data:tv.map(t=>t.min),backgroundColor:tv.map(t=>t.min<=t.ref?c.vid:c.warn),borderRadius:5,grouped:false,barPercentage:.5},{label:'Referencia',data:tv.map(t=>t.ref),backgroundColor:c.line,borderRadius:5,grouped:false,barPercentage:.9}]},options:{indexAxis:'y',maintainAspectRatio:false,scales:{x:{beginAtZero:true,grid:{color:c.line},title:{display:true,text:'minutos por pieza'}},y:{grid:{display:false}}},plugins:{vlabels:{on:true,sets:[0],color:c.ink,horizontal:true,fmt:v=>v+' min'}}}});
+  $('#acts-vid').innerHTML=acts(T.acciones.vid);
+
+  // CALIDAD
+  const Q=M.calidad, R=Q.revision;
+  const rp=R.map(r=>r.con/r.revisadas);
+  const trend=(arr,i)=>i==0?'n':(arr[i]<arr[i-1]?'ok':arr[i]>arr[i-1]?'bad':'n');
+  const lastI=R.length-1;
+  $('#q-kpis').innerHTML=[
+    kpi(pct(rp[lastI]),'Materias con ajustes en la última semana',`semana anterior: ${pct(rp[lastI-1])} · bajó`,trend(rp,lastI)=='ok'?'up':'down'),
+    kpi(`${Q.revisadasTotal-Q.conAjustesTotal-1} de ${Q.revisadasTotal}`,'Pasaron sin ajustes en octubre','meta: todas'),
+    kpi(fmt(R[lastI].dias)+' días','De terminada a revisada',`al inicio: ${fmt(R[0].dias)} días`,'up'),
+    kpi(Q.incidencias.total,'Incidencias de UIDE (1/10–10/11)',`${Math.round(Q.incidencias.tipos[0][1]/Q.incidencias.total*100)} % clasificadas como de fábrica`)
+  ].join('');
+  mk('c-qrev',{type:'bar',data:{labels:R.map(r=>r.label),datasets:[{label:'Sin ajustes',data:R.map(r=>r.sin),backgroundColor:c.ok,stack:'a'},{label:'Con ajustes',data:R.map(r=>r.con),backgroundColor:R.map((r,i)=>trend(rp,i)=='ok'?c.warn:c.bad),stack:'a'},{label:'Cambio externo',data:R.map(r=>r.externo),backgroundColor:c.meta,stack:'a',borderRadius:6}]},options:{maintainAspectRatio:false,scales:{x:{stacked:true,grid:{display:false}},y:{stacked:true,beginAtZero:true,grid:{color:c.line},ticks:{precision:0}}},plugins:{tooltip:{callbacks:{label:t=>`${t.dataset.label}: ${t.raw}`,footer:items=>{const i=items[0].dataIndex;return `Con ajustes: ${pct(rp[i])}`}}}}}});
+  mk('c-qerr',{type:'bar',data:{labels:Q.errores.map(e=>e[0]),datasets:[{data:Q.errores.map(e=>e[1]),backgroundColor:Q.errores.map((e,i)=>i==0?c.bad:c.meta),borderRadius:5}]},options:{indexAxis:'y',maintainAspectRatio:false,scales:{x:{beginAtZero:true,max:11,grid:{color:c.line},ticks:{precision:0}},y:{grid:{display:false},ticks:{font:{size:11},callback:function(v){const l=this.getLabelForValue(v);return l.length>40?l.slice(0,39)+'…':l}}}},plugins:{vlabels:{on:true,horizontal:true,color:c.ink,fmt:v=>v+' de 11'}}}});
+  const inc=Q.incidencias.semanas.map(x=>x[1]);
+  mk('c-qinc',{type:'bar',data:{labels:Q.incidencias.semanas.map(x=>x[0]),datasets:[{data:inc,backgroundColor:inc.map((v,i)=>trend(inc,i)=='ok'?c.ok:trend(inc,i)=='bad'?c.bad:c.meta),borderRadius:6}]},options:{maintainAspectRatio:false,scales:{y:{beginAtZero:true,grid:{color:c.line},ticks:{precision:0}},x:{grid:{display:false},ticks:{font:{size:11}}}},plugins:{vlabels:{on:true,color:c.ink}}}});
+  mk('c-qtipo',{type:'doughnut',data:{labels:Q.incidencias.tipos.map(t=>t[0]),datasets:[{data:Q.incidencias.tipos.map(t=>t[1]),backgroundColor:[c.brand,c.dis,c.vid,c.meta],borderColor:c.surface,borderWidth:2}]},options:{maintainAspectRatio:false,cutout:'62%',plugins:{legend:{display:true,position:'right',labels:{boxWidth:12,boxHeight:12,generateLabels:ch=>ch.data.labels.map((l,i)=>({text:`${l}: ${ch.data.datasets[0].data[i]}`,fillStyle:ch.data.datasets[0].backgroundColor[i],strokeStyle:'transparent',fontColor:c.ink2,index:i}))}}}}});
+  $('#acts-cal').innerHTML=acts(T.acciones.cal);
+
+  // ENTRADA
+  const E=M.llegadas.slice().sort((a,b)=>a.llego.localeCompare(b.llego)||b.atraso-a.atraso);
+  $('#e-find').textContent=`${k.llegadasTarde} de las ${k.llegadas} materias que llegaron en ${M.mesCorto} llegaron tarde, con ${k.atrasoMed} días de atraso (mediana)`;
+  const lateLote=lo=>{const x=E.filter(e=>e.lan==lo);return [x.length,x.filter(e=>e.atraso>0).length]};
+  $('#e-kpis').innerHTML=[kpi(k.llegadas,'Materias que llegaron en el mes'),kpi(k.llegadasTarde,'Llegaron tarde',`${pct(k.llegadasTarde/k.llegadas)} del total`,'down'),kpi(k.atrasoMed+' días','Atraso mediano'),kpi(k.atrasoMax+' días','Atraso máximo')].join('');
+  const d2n=s=>new Date(s+'T12:00:00').getTime();
+  $('#e-wrap').style.height=Math.max(380,E.length*21+70)+'px';
+  mk('c-entrada',{type:'scatter',data:{datasets:[
+    {label:'Debía llegar',order:2,data:E.map((e,i)=>({x:d2n(e.debia),y:i})),pointRadius:5,pointStyle:'circle',backgroundColor:c.surface,borderColor:c.ink3,borderWidth:2},
+    {label:'Llegó',order:1,data:E.map((e,i)=>({x:d2n(e.llego),y:i})),pointRadius:5,backgroundColor:E.map(e=>e.atraso>0?c.bad:c.ok),borderColor:E.map(e=>e.atraso>0?c.bad:c.ok)}]},
+    options:{maintainAspectRatio:false,animation:false,scales:{x:{type:'linear',position:'top',grid:{color:c.line},ticks:{callback:v=>{const d=new Date(v);return d.getDate()+'/'+(d.getMonth()+1)},stepSize:7*864e5}},y:{type:'category',labels:E.map((e,i)=>i),offset:true,grid:{display:false},ticks:{autoSkip:false,font:{size:10.5},callback:(v,i)=>{const n=E[i].materia;return (n.length>40?n.slice(0,39)+'…':n)}}}},
+    plugins:{tooltip:{callbacks:{title:it=>E[it[0].dataIndex].materia,label:t=>{const e=E[t.dataIndex];return t.datasetIndex==0?`Debía llegar: ${e.debia.split('-').reverse().slice(0,2).join('/')}`:`Llegó: ${e.llego.split('-').reverse().slice(0,2).join('/')} (${e.atraso>0?e.atraso+' días tarde':'a tiempo'}) · lote ${e.lan.split('-').reverse().slice(0,2).join('/')}`}}}}},
+    plugins:[{id:'conn',beforeDatasetsDraw(ch){const {ctx}=ch;const a=ch.getDatasetMeta(0).data,b=ch.getDatasetMeta(1).data;ctx.save();ctx.lineWidth=2;a.forEach((p,i)=>{const e=E[i];ctx.strokeStyle=e.atraso>0?c.bad:c.ok;ctx.globalAlpha=.55;ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(b[i].x,b[i].y);ctx.stroke()});ctx.restore()}}]});
+  const lotes=[...new Set(E.map(e=>e.lan))].sort();
+  const med=a=>{a=a.slice().sort((x,y)=>x-y);const n=a.length;return n?(n%2?a[(n-1)/2]:(a[n/2-1]+a[n/2])/2):null};
+  $('#e-tab').innerHTML='<tr><th>Lote de lanzamiento</th><th class="n">Llegaron</th><th class="n">Tarde</th><th class="n">A tiempo o antes</th><th class="n">Atraso mediano de las tardías</th></tr>'+lotes.map(lo=>{const x=E.filter(e=>e.lan==lo),t=x.filter(e=>e.atraso>0);return `<tr><td>${lo.split('-').reverse().join('/')}</td><td class="n">${x.length}</td><td class="n">${t.length}</td><td class="n">${x.length-t.length}</td><td class="n">${t.length?med(t.map(e=>e.atraso))+' días':'—'}</td></tr>`}).join('');
+  $('#acts-ent').innerHTML=acts(T.acciones.ent);
+
+  // PROYECCION
+  const P=M.proyeccion, G=M.seguimiento;
+  const dRatio=G.dReal/G.dProj, vRatio=G.vReal/G.vProj;
+  $('#p-find').textContent=`${P.mes}: el lote 2/12 sale completo el viernes 27/11 si diseño trabaja al ${Math.round(G.ritmoNecesarioD*100)} % de su meta desde el 12/11`;
+  $('#p-sub').textContent=`Proyección hecha con datos al 31/10 y seguimiento al ${G.corte}. ${P.dh} días hábiles (${P.festivos}). Capacidad del mes a la meta: diseño ${fmt(P.capD)} materias y video ${P.capV}.`;
+  const lamp=(r,txt,det)=>`<div class="card sem"><span class="lamp" style="background:${r>=1?c.ok:r>=.85?c.warn:c.bad}"></span><div><div class="kpi"><span class="v">${pct(r)}</span><span class="l">${txt}</span><span class="d flat">${det}</span></div></div></div>`;
+  $('#p-sem').innerHTML=lamp(dRatio,'Diseño frente a lo proyectado',`${fmt(G.dReal)} de ${fmt(G.dProj)} materias al ${G.corte}; semana del 9/11: 110 %`)+lamp(vRatio,'Video frente a lo proyectado',`${fmt(G.vReal)} de ${fmt(G.vProj)} materias al ${G.corte}`)+lamp(G.completasMes/ (P.esperadasMes*G.diasTranscurridos/G.diasTotales),'Materias completas frente al ritmo esperado',`${G.completasMes} de ${P.esperadasMes} esperadas en el mes; lote 2/12: ${G.lote212.completas} de ${G.lote212.total}`);
+  const Dd=P.diario, nReal=Dd.dReal.length;
+  const burn=(id,proj,real,need,color)=>mk(id,{type:'line',data:{labels:Dd.fechas,datasets:[{label:'A la meta',data:proj.map(v=>Math.max(0,+(need-v).toFixed(2))),borderColor:c.ink3,borderDash:[6,5],pointRadius:0,borderWidth:2,tension:0},{label:'Real',data:real.map(v=>+(need-v).toFixed(2)),borderColor:color,backgroundColor:color,pointRadius:4,borderWidth:3,tension:.2}]},options:{maintainAspectRatio:false,interaction:{mode:'index',intersect:false},scales:{y:{beginAtZero:true,grid:{color:c.line},title:{display:true,text:'materias pendientes'}},x:{grid:{display:false},ticks:{maxRotation:0,autoSkip:true,font:{size:11}}}},plugins:{legend:{display:true,position:'top',align:'start',labels:{boxWidth:14,boxHeight:3}},tooltip:{callbacks:{label:t=>`${t.dataset.label}: faltan ${fmt(t.raw)}`}},hline:{y:0,color:c.ok,label:''}}}});
+  burn('c-pd',Dd.dProj,Dd.dReal,P.necesidad,c.dis); burn('c-pv',Dd.vProj,Dd.vReal,P.necesidadV,c.vid);
+  $('#p-lotes').innerHTML='<tr><th>Lote</th><th class="n">Materias</th><th>Diseño</th><th>Video</th><th>Lote completo</th></tr>'+P.lotes.map(l=>`<tr><td>${l.lote}</td><td class="n">${l.materias}</td><td>${l.real?l.fecha:l.fechaD}</td><td>${l.real?l.fecha:l.fechaV}</td><td>${l.real?`<span class="pill ok">${l.fecha} · real</span>`:`<span class="pill n">${l.fecha}</span>`}</td></tr>`).join('');
+  $('#p-segtab').innerHTML='<tr><th>Semana</th><th class="n">Diseño real / meta</th><th class="n">%</th><th class="n">Video real / meta</th><th class="n">%</th></tr>'+G.semanas.map(w=>{const a=w.dReal/w.dProj,b=w.vReal/w.vProj;return `<tr><td>${w.label}</td><td class="n">${fmt(w.dReal,2)} / ${fmt(w.dProj,2)}</td><td class="n"><span class="pill ${sc(a)}">${pct(a)}</span></td><td class="n">${fmt(w.vReal,2)} / ${fmt(w.vProj,0)}</td><td class="n"><span class="pill ${sc(b)}">${pct(b)}</span></td></tr>`}).join('');
+  $('#acts-pro').innerHTML=acts(T.acciones.pro);
+
+  // METODO
+  const MT=[['Período','Mes calendario del 1 al último día, con sábados y domingos. Las metas usan solo días hábiles.'],['Festivos','Colombia para todo el equipo, salvo las dos personas en Islas Canarias (festivos de Canarias/España).'],['Producción de diseño','Cada materia tiene 12 entregables (HTML, Genially, imágenes e infografía × 3 clases). Cada uno vale 1/12 y se reparte por los minutos registrados.'],['Producción de video','6 videos por materia (intro, clase 1–3, profesor, RDA). Cada uno vale 1/6.'],['Meta de diseño','1 materia por diseñador cada 3 días hábiles disponibles.'],['Meta de video','1 materia por editora por día hábil. El apoyo de coordinación no tiene meta.'],['Ciclo','Días calendario entre la primera sesión y la fecha de completada. Mediana por semana.'],['Diferencia diseño–video','Días entre la última sesión de diseño y la última de video de cada materia completada.'],['Anticipación','Días calendario entre la fecha de completada y la de lanzamiento.'],['Llegada','«Debía llegar» del Cronograma frente a la fecha de ingreso a fábrica en Asignaturas.'],['Calidad','Revisión interna de materias terminadas y registro de incidencias de UIDE (informes de Cristina Alisente, octubre). Meta: 0 errores; el color indica si bajan frente a la semana anterior.'],['Proyección','Lo que falta de cada lote al cierre del mes frente a la capacidad diaria a la meta, con festivos y vacaciones registradas, en orden de lanzamiento.'],['Seguimiento','Producción real acumulada desde el 1/11 frente a la proyectada a la meta.'],['Limpieza','No se cuentan sesiones duplicadas, de 1 minuto o menos, de más de 8 horas ni timers activados por error.'],['Fuente',`Sheet «Fábrica Producción UIDE» y dashboard de producción. Actualizado el ${DATA.actualizado}.`]];
+  $('#m-tab').innerHTML=MT.map(r=>`<tr><th style="width:200px;white-space:normal">${r[0]}</th><td>${r[1]}</td></tr>`).join('');
+  $('#foot').textContent=`Fábrica de Producción · Maestrías UIDE · ${M.nombre} · datos al ${M.corte}, seguimiento al ${M.seguimiento.corte}. Sin datos individuales: el detalle por persona va en el informe interno.`;
+  renderQA(T);
+}
+
+// ---------- preguntas ----------
+function renderQA(T){
+  const c=C(),k=M.kpi,G=M.seguimiento,P=M.proyeccion,W=M.semanas;
+  const Q=[
+    {q:'¿Vamos a llegar al 27/11 con el lote 2/12?',a:()=>({big:`${Math.round(G.ritmoNecesarioD*100)} %`,txt:`Es el ritmo que necesita diseño desde el 12/11 frente a su meta. Faltan ${fmt(G.dFalta)} materias de diseño y hay ${fmt(G.dCapRestante)} de capacidad a la meta hasta el viernes 27/11. La semana del 9 al 11/11 diseño fue al 110 %: si se mantiene, el lote sale el 27/11. Video tiene margen y termina hacia el 23/11.`,chart:{type:'bar',labels:['Falta','Capacidad a la meta'],data:[G.dFalta,G.dCapRestante],colors:[c.bad,c.dis]}})},
+    {q:'¿Por qué parece que todo sigue igual?',a:()=>({big:'≈10 por semana',txt:'Las materias completas por semana no cambiaron porque dependen de lo que llega de instruccional. Lo que cambió es el tiempo: el ciclo bajó de 6,7 a 4,3 días y diseño y video terminan casi a la vez (de 4–8 días a ≈1 día).',chart:{type:'line',labels:S.map(s=>s.label),data:S.map(s=>s.ciclo),colors:[c.brand]}})},
+    {q:'¿Cuál fue la semana más baja de diseño y por qué?',a:()=>{const p=W.map(w=>w.dProd/w.dMeta);const i=p.indexOf(Math.min(...p));return {big:pct(p[i]),txt:`La semana del ${W[i].label}: solo ${W[i].dh} días hábiles y arranque del mes. Las semanas con ausencias o festivos son las que bajan el promedio; la última semana del mes llegó al ${pct(p[p.length-1])}.`,chart:{type:'bar',labels:W.map(w=>w.label),data:p.map(x=>Math.round(x*100)),colors:p.map(x=>x>=1?c.ok:x>=.85?c.warn:c.bad)}}}},
+    {q:'¿Cuántas materias llegan tarde de instruccional?',a:()=>({big:`${k.llegadasTarde} de ${k.llegadas}`,txt:`En ${M.mesCorto} llegaron tarde el ${pct(k.llegadasTarde/k.llegadas)} de las materias, con ${k.atrasoMed} días de atraso (mediana) y hasta ${k.atrasoMax}. Aun así, todas salieron antes del lanzamiento: la fábrica absorbe el atraso con su propio margen.`,chart:{type:'bar',labels:['Tarde','A tiempo o antes'],data:[k.llegadasTarde,k.llegadas-k.llegadasTarde],colors:[c.bad,c.ok]}})},
+    {q:'¿Qué error de calidad se repite más?',a:()=>({big:'6 de 11',txt:'Títulos, cabeceras o índices que no corresponden: estaban en 6 de las 11 materias con ajustes. Se evita revisando la vista previa del Canvas antes de marcar el cierre.',chart:{type:'bar',labels:M.calidad.errores.map(e=>e[0]),data:M.calidad.errores.map(e=>e[1]),colors:M.calidad.errores.map((e,i)=>i==0?c.bad:c.meta),h:true}})},
+    {q:'¿Cuánto tarda una materia en la fábrica?',a:()=>({big:'4,3 días',txt:'Mediana desde la primera sesión hasta materia completa entre el 12/10 y el 10/11 (antes: 6,7 días). En la semana del 2/11 fue de 2,9 días, la mejor de la serie.',chart:{type:'line',labels:S.map(s=>s.label),data:S.map(s=>s.ciclo),colors:[c.brand]}})},
+    {q:'¿Cuánto falta del lote 2/12?',a:()=>({big:`${G.lote212.total-G.lote212.completas} de ${G.lote212.total}`,txt:`Al ${G.corte}: ${G.lote212.completas} completas, ${G.lote212.produccion} en producción, ${G.lote212.espera} en espera y ${G.lote212.porIngresar} por ingresar. En materias-equivalente faltan ${fmt(G.dFalta)} de diseño y ${fmt(G.vFalta)} de video.`,chart:{type:'bar',labels:['Completas','En producción','En espera','Por ingresar'],data:[G.lote212.completas,G.lote212.produccion,G.lote212.espera,G.lote212.porIngresar],colors:[c.ok,c.dis,c.meta,c.bad]}})},
+    {q:'¿Las horas por materia están bajando?',a:()=>({big:`${fmt(k.dHxM)} h`,txt:'En diseño, no: el avance de octubre vino del flujo (menos espera entre frentes) y de más horas trabajadas (de ≈117 a ≈158 h por semana), no de hacer cada pieza más rápido. Es la siguiente mejora: estandarizar Genially y HTML.',chart:{type:'bar',labels:S.map(s=>s.label),data:S.map(s=>+(s.dHoras/Math.max(s.dProd,0.1)).toFixed(1)),colors:S.map(()=>c.dis)}})},
+  ];
+  const chips=$('#chips');chips.innerHTML='';
+  Q.forEach((x,i)=>{const b=document.createElement('button');b.className='chip';b.type='button';b.textContent=x.q;b.setAttribute('aria-pressed','false');b.onclick=()=>{chips.querySelectorAll('.chip').forEach(z=>z.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true');show(x)};chips.appendChild(b)});
+  chips.firstChild&&chips.firstChild.click();
+  function show(x){const r=x.a();const A=$('#answer');A.innerHTML=`<h3>${x.q}</h3><div class="big">${r.big}</div><p>${r.txt}</p><div class="chart short"><canvas id="c-qa"></canvas></div>`;
+    const ch=r.chart;mk('c-qa',{type:ch.type,data:{labels:ch.labels,datasets:[{data:ch.data,backgroundColor:ch.colors,borderColor:ch.colors[0],borderRadius:6,pointRadius:4,tension:.3,borderWidth:ch.type=='line'?2.5:0}]},options:{indexAxis:ch.h?'y':'x',maintainAspectRatio:false,scales:{y:{beginAtZero:true,grid:{color:c.line}},x:{grid:{display:false},ticks:{font:{size:10.5}}}},plugins:{vlabels:{on:true,color:c.ink2,horizontal:!!ch.h,fmt:v=>fmt(v,Number.isInteger(v)?0:1)}}}})}
+}
+
+// ---------- audio ----------
+const lb=$('#listen');let speaking=false;
+lb.onclick=()=>{if(!('speechSynthesis' in window)){lb.querySelector('span').textContent='Audio no disponible en este navegador';return}
+  if(speaking){speechSynthesis.cancel();return}
+  const k=M.kpi,G=M.seguimiento,T=textos(M);
+  const txt=`Resumen de ${M.nombre}. Se completaron ${k.completadas} materias, todas antes de su lanzamiento, con ${k.anticMed} días de anticipación en la mediana. Diseño cerró al ${Math.round(k.dProd/k.dMeta*100)} por ciento de su meta y las editoras de video al ${Math.round(k.vProd/k.vMeta*100)} por ciento, y las dos cerraron la última semana por encima de la meta. Desde el 12 de octubre cada materia tarda 4,3 días en lugar de 6,7, y diseño y video terminan casi a la vez. Lo que no mejoró: las materias completas por semana siguen en 10 porque dependen de lo que llega, 32 de 40 materias llegaron tarde de instruccional, y en la revisión interna 5 de cada 12 materias aún necesitan ajustes. Para noviembre, el lote del 2 de diciembre sale completo el viernes 27 de noviembre si diseño trabaja al ${Math.round(G.ritmoNecesarioD*100)} por ciento de su meta; la semana del 9 de noviembre va al 110 por ciento.`;
+  const u=new SpeechSynthesisUtterance(txt);u.lang='es-CO';const v=speechSynthesis.getVoices().find(v=>/^es/i.test(v.lang));if(v)u.voice=v;u.rate=1.02;
+  u.onstart=()=>{speaking=true;lb.setAttribute('aria-pressed','true');lb.querySelector('span').textContent='Detener'};
+  u.onend=u.onerror=()=>{speaking=false;lb.setAttribute('aria-pressed','false');lb.querySelector('span').textContent='Escuchar el resumen'};
+  speechSynthesis.speak(u)};
+
+// ---------- tabs ----------
+const tabs=[...document.querySelectorAll('nav.tabs button')];
+function go(v,push){tabs.forEach(t=>t.setAttribute('aria-selected',t.dataset.v==v));document.querySelectorAll('section.view').forEach(s=>s.classList.toggle('on',s.id=='v-'+v));if(push)history.replaceState(null,'','#'+v);Object.values(charts).forEach(ch=>{if(ch.canvas.closest('section.view.on')){ch.resize();if(!reduce){ch.reset();ch.update()}}});window.scrollTo({top:0})}
+tabs.forEach(t=>t.onclick=()=>go(t.dataset.v,true));
+sel.onchange=render;
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change',render);
+render();
+const h=location.hash.slice(1);if(h&&tabs.some(t=>t.dataset.v==h))go(h,false);
+})();
+</script>
+</body>
+</html>
