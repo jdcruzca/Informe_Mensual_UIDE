@@ -41,7 +41,7 @@ header.top{background:var(--surface)}
 .bar1{display:flex;align-items:center;gap:14px;padding-top:14px;padding-bottom:6px}
 .tools{margin-left:auto;display:flex;gap:8px}
 .tabbar{position:sticky;top:0;z-index:20;background:var(--surface);border-bottom:1px solid var(--line)}
-.ctx{display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px;padding-top:18px}
+.ctx{display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px;padding-top:16px;padding-bottom:16px;border-bottom:1px solid var(--line)}
 .ctxrow{display:flex;align-items:center;gap:10px;min-width:0;max-width:100%}
 .ctxl{font-size:14px;color:var(--ink2)}
 .seg{display:flex;gap:2px;background:var(--surface);border:1px solid var(--line);border-radius:11px;padding:3px;overflow-x:auto;scrollbar-width:none;max-width:100%}
@@ -64,7 +64,7 @@ nav.tabs{display:flex;gap:4px;overflow-x:auto;padding-bottom:0;scrollbar-width:n
 nav.tabs::-webkit-scrollbar{display:none}
 nav.tabs button{border:0;background:none;color:var(--ink2);padding:10px 12px 12px;font-size:14px;cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap}
 nav.tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--brand);font-weight:600}
-main{padding:28px 0 60px}
+main.wrap{padding-top:28px;padding-bottom:60px}
 section.view{display:none}
 section.view.on{display:block}
 h2.find{font-size:24px;line-height:1.28;letter-spacing:-.3px;margin:0 0 8px;font-weight:600;max-width:46ch}
@@ -2401,7 +2401,7 @@ const band={id:'band',beforeDraw(ch,a,o){if(!o||o.to==null)return;const {ctx,cha
 const vlabels={id:'vlabels',afterDatasetsDraw(ch,a,o){if(!o||!o.on)return;const {ctx}=ch;ctx.save();ctx.font='600 11px Poppins, sans-serif';ctx.fillStyle=o.color;ctx.textAlign='center';(o.sets||[0]).forEach(di=>{const meta=ch.getDatasetMeta(di);if(meta.hidden)return;meta.data.forEach((el,i)=>{const v=ch.data.datasets[di].data[i];if(v==null)return;const t=o.fmt?o.fmt(v):v;const p=el.tooltipPosition();if(o.horizontal){ctx.textAlign='left';ctx.fillText(t,p.x+6,p.y+4)}else ctx.fillText(t,p.x,p.y-6)})});ctx.restore()}};
 const hline={id:'hline',afterDraw(ch,a,o){if(!o||o.y==null)return;const {ctx,chartArea:ca,scales:{y}}=ch;const py=y.getPixelForValue(o.y);ctx.save();ctx.strokeStyle=o.color;ctx.setLineDash([5,4]);ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(ca.left,py);ctx.lineTo(ca.right,py);ctx.stroke();if(o.label){ctx.setLineDash([]);ctx.fillStyle=o.color;ctx.font='500 11px Poppins, sans-serif';ctx.textAlign='left';ctx.fillText(o.label,ca.left+4,py-6)}ctx.restore()}};
 Chart.register(band,vlabels,hline);
-function mk(id,cfg){if(charts[id])charts[id].destroy();const el=document.getElementById(id);if(!el)return;charts[id]=new Chart(el,cfg);return charts[id]}
+function mk(id,cfg){if(charts[id]){try{charts[id].destroy()}catch(e){}delete charts[id]}const el=document.getElementById(id);if(!el||!el.closest('section.view.on'))return;charts[id]=new Chart(el,cfg);return charts[id]}
 function kpi(v,l,d,cls,barPct,barColor){return `<div class="card kpi"><span class="v">${v}</span><span class="l">${l}</span>${d?`<span class="d ${cls||''}">${d}</span>`:''}${barPct!=null?`<div class="bar"><i style="width:${Math.min(100,barPct*100)}%;background:${barColor}"></i></div>`:''}</div>`}
 function acts(list){return list.map(a=>`<div class="act"><span class="tag ${a.t}">${a.f}</span><div><div class="q">${a.q}</div><div class="dato">${a.d}</div></div><div class="acc">${a.a}</div></div>`).join('')}
 function sc(p){return p>=1?'ok':p>=.85?'warn':'bad'}
@@ -2653,7 +2653,7 @@ tb.onclick=()=>{const n=curDark()?'light':'dark';document.documentElement.setAtt
 
 // ---------- tabs ----------
 const tabs=[...document.querySelectorAll('nav.tabs button')];
-function go(v,push){tabs.forEach(t=>t.setAttribute('aria-selected',t.dataset.v==v));document.querySelectorAll('section.view').forEach(s=>s.classList.toggle('on',s.id=='v-'+v));if(push)history.replaceState(null,'','#'+v);Object.values(charts).forEach(ch=>{if(ch.canvas.closest('section.view.on')){ch.resize();if(!reduce){ch.reset();ch.update()}}});window.scrollTo({top:0})}
+function go(v,push){tabs.forEach(t=>t.setAttribute('aria-selected',t.dataset.v==v));document.querySelectorAll('section.view').forEach(s=>s.classList.toggle('on',s.id=='v-'+v));if(push)history.replaceState(null,'','#'+v);window.scrollTo({top:0});requestAnimationFrame(()=>render())}
 tabs.forEach(t=>t.onclick=()=>go(t.dataset.v,true));
 const wsel=$('#sem');
 function segs(){
