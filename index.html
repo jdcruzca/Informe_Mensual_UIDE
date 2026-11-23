@@ -326,7 +326,7 @@ footer{color:var(--ink3);font-size:12.5px;padding:24px 0 40px;border-top:1px sol
 
 <script>
 const DATA = {
- "actualizado": "17/11/2026",
+ "actualizado": "23/11/2026",
  "semanas": [
   {
    "label": "14–20 sep",
@@ -452,6 +452,20 @@ const DATA = {
    "comp": 9,
    "ciclo": 4.3,
    "brecha": 1.7,
+   "llegadas": null
+  },
+  {
+   "label": "16–22 nov",
+   "ini": "2026-11-16",
+   "fin": "2026-11-22",
+   "dh": 4,
+   "dProd": 9.42,
+   "vProd": 9.83,
+   "dHoras": 162,
+   "vHoras": 40,
+   "comp": 9,
+   "ciclo": 6.3,
+   "brecha": 5.2,
    "llegadas": null
   }
  ],
@@ -1257,11 +1271,15 @@ const DATA = {
       6.59,
       7.84,
       9.92,
-      12.75,
-      14.42,
-      16.0,
-      18.25,
-      18.58
+      12.42,
+      13.51,
+      15.01,
+      17.26,
+      17.59,
+      20.17,
+      21.84,
+      24.09,
+      26.67
      ],
      "vReal": [
       0,
@@ -1270,27 +1288,31 @@ const DATA = {
       7.0,
       9.5,
       11.67,
-      14.84,
-      17.84,
-      19.51,
-      23.34,
-      23.84
+      14.83,
+      17.83,
+      18.5,
+      22.33,
+      22.83,
+      24.5,
+      27.83,
+      30.25,
+      32.67
      ]
     }
    },
    "seguimiento": {
-    "corte": "16/11/2026",
-    "diasTranscurridos": 9,
+    "corte": "22/11/2026",
+    "diasTranscurridos": 13,
     "diasTotales": 19,
-    "dReal": 18.58,
-    "dProj": 19.67,
-    "vReal": 23.84,
-    "vProj": 26.0,
-    "dFalta": 19.42,
-    "vFalta": 14.0,
-    "dCapRestante": 19.0,
-    "ritmoNecesarioD": 1.022,
-    "ultimaSemana": "9–15 nov",
+    "dReal": 26.67,
+    "dProj": 28.67,
+    "vReal": 32.67,
+    "vProj": 38.0,
+    "dFalta": 11.33,
+    "vFalta": 5.17,
+    "dCapRestante": 10.0,
+    "ritmoNecesarioD": 1.133,
+    "ultimaSemana": "16–22 nov",
     "semanas": [
      {
       "label": "2–8 nov",
@@ -1307,24 +1329,34 @@ const DATA = {
       "dReal": 10.42,
       "vProj": 15,
       "vReal": 14.33
+     },
+     {
+      "label": "16–22 nov",
+      "dias": 4,
+      "dProj": 9.33,
+      "dReal": 9.42,
+      "vProj": 12,
+      "vReal": 9.83
      }
     ],
-    "completasMes": 20,
+    "completasMes": 29,
     "completasEsperadas": 41,
     "lote212": {
      "total": 33,
-     "completas": 12,
-     "produccion": 6,
-     "espera": 14,
-     "porIngresar": 1
+     "completas": 20,
+     "produccion": 7,
+     "espera": 6,
+     "porIngresar": 0
     },
     "loteEnero": {
      "total": 31,
-     "recibidas": 17,
-     "faltan": 14
+     "recibidas": 22,
+     "faltan": 9
     },
-    "desde": "17/11",
-    "finVideo": "23/11"
+    "desde": "23/11",
+    "finVideo": "24/11",
+    "finDiseno": "30/11",
+    "finLote": "Lun 30/11"
    },
    "completadas": [
     {
@@ -1573,40 +1605,40 @@ const DATA = {
    "id": "2026-11",
    "nombre": "Noviembre 2026 (en curso)",
    "mesCorto": "noviembre",
-   "periodo": "1 al 30 de noviembre de 2026 · datos al 15/11",
+   "periodo": "1 al 30 de noviembre de 2026 · datos al 22/11",
    "dh": 19,
    "festivos": "2/11 y 16/11",
-   "corte": "15/11/2026",
+   "corte": "22/11/2026",
    "enCurso": true,
-   "dhTranscurridos": 10,
+   "dhTranscurridos": 13,
    "kpi": {
-    "completadas": 20,
+    "completadas": 29,
     "prevCompletadas": 40,
-    "anticMed": 20.0,
+    "anticMed": 15,
     "anticMin": 6,
-    "anticMax": 27,
-    "antic15": 14,
-    "antic8": 2,
+    "anticMax": 62,
+    "antic15": 17,
+    "antic8": 8,
     "antic7": 4,
-    "dMeta": 19.33,
-    "dProd": 18.26,
-    "dCerr": 17,
-    "dHoras": 346.2,
-    "dHxM": 19.0,
-    "vMeta": 26,
-    "vProd": 23.83,
-    "vTot": 23.83,
-    "vCerr": 23,
-    "vHoras": 138.7,
-    "vHxM": 5.8,
-    "ciclo": 4.1,
+    "dMeta": 28.67,
+    "dProd": 27.68,
+    "dCerr": 28,
+    "dHoras": 507.7,
+    "dHxM": 18.3,
+    "vMeta": 38,
+    "vProd": 33.66,
+    "vTot": 33.66,
+    "vCerr": 36,
+    "vHoras": 178.3,
+    "vHxM": 5.3,
+    "ciclo": 5.0,
     "cicloAntes": 6.7,
-    "brecha": 1.2,
+    "brecha": 3.2,
     "brechaAntes": "4–8",
-    "llegadas": 18,
-    "llegadasTarde": 6,
-    "atrasoMed": 22.5,
-    "atrasoMax": 24
+    "llegadas": 23,
+    "llegadasTarde": 11,
+    "atrasoMed": 7,
+    "atrasoMax": 37
    },
    "semanas": [
     {
@@ -1640,10 +1672,28 @@ const DATA = {
      "vProd": 14.33,
      "vTot": 14.33,
      "vHoras": 67.7,
-     "vCerr": 12,
+     "vCerr": 15,
      "comp": 9,
      "ciclo": 4.3,
      "brecha": 1.7
+    },
+    {
+     "label": "16–22 nov",
+     "ini": "2026-11-16",
+     "fin": "2026-11-22",
+     "dh": 4,
+     "dMeta": 9.33,
+     "dProd": 9.42,
+     "dHoras": 161.6,
+     "dCerr": 11,
+     "vMeta": 12,
+     "vProd": 9.83,
+     "vTot": 9.83,
+     "vHoras": 39.7,
+     "vCerr": 10,
+     "comp": 9,
+     "ciclo": 6.3,
+     "brecha": 5.2
     }
    ],
    "porLote": [
@@ -1659,8 +1709,8 @@ const DATA = {
     },
     {
      "lan": "2026-12-02",
-     "n": 12,
-     "antic": 21
+     "n": 20,
+     "antic": 19.0
     }
    ],
    "completadas": [
@@ -1769,8 +1819,8 @@ const DATA = {
     {
      "materia": "Gestión Ambiental organizacional",
      "completada": "2026-11-12",
-     "lan": "2026-12-02",
-     "antic": 20
+     "lan": "2027-01-13",
+     "antic": 62
     },
     {
      "materia": "Turismo Sostenible y Desarrollo Territorial",
@@ -1783,25 +1833,79 @@ const DATA = {
      "completada": "2026-11-13",
      "lan": "2026-12-02",
      "antic": 19
+    },
+    {
+     "materia": "Dirección Financiera de Empresas de Seguros",
+     "completada": "2026-11-17",
+     "lan": "2026-12-02",
+     "antic": 15
+    },
+    {
+     "materia": "Energía de la biomasa",
+     "completada": "2026-11-18",
+     "lan": "2026-12-02",
+     "antic": 14
+    },
+    {
+     "materia": "Epidemiología de las Enfermedades Transmisibles y No transmisibles",
+     "completada": "2026-11-17",
+     "lan": "2026-12-02",
+     "antic": 15
+    },
+    {
+     "materia": "Herramientas de coaching para la gestión de personas",
+     "completada": "2026-11-17",
+     "lan": "2026-12-02",
+     "antic": 15
+    },
+    {
+     "materia": "Administración de recursos y eficiencia en la gestión del estado",
+     "completada": "2026-11-20",
+     "lan": "2026-12-02",
+     "antic": 12
+    },
+    {
+     "materia": "Entorno Económico Internacional y Mercados Financieros",
+     "completada": "2026-11-20",
+     "lan": "2026-12-02",
+     "antic": 12
+    },
+    {
+     "materia": "Marketing de contenidos",
+     "completada": "2026-11-20",
+     "lan": "2026-12-02",
+     "antic": 12
+    },
+    {
+     "materia": "Currículo y planificación",
+     "completada": "2026-11-19",
+     "lan": "2026-12-02",
+     "antic": 13
+    },
+    {
+     "materia": "Protección de datos en el ámbito privado",
+     "completada": "2026-11-18",
+     "lan": "2026-12-02",
+     "antic": 14
     }
    ],
    "tipos": [
     {
      "tipo": "HTML",
      "frente": "D",
-     "min": 79,
+     "min": 89,
      "ref": 89
     },
     {
      "tipo": "Genially",
      "frente": "D",
-     "min": 118,
+     "min": 134,
      "ref": 138
     },
     {
      "tipo": "Imágenes",
      "frente": "D",
-     "min": 46,
+     "min": 45,
      "ref": 54
     },
     {
@@ -1819,19 +1923,19 @@ const DATA = {
     {
      "tipo": "Video de clase",
      "frente": "V",
-     "min": 63,
+     "min": 55,
      "ref": 105
     },
     {
      "tipo": "Video intro",
      "frente": "V",
-     "min": 63,
+     "min": 62,
      "ref": 105
     },
     {
      "tipo": "Video profesor",
      "frente": "V",
-     "min": 11,
+     "min": 9,
      "ref": 17
     },
     {
@@ -1985,6 +2089,46 @@ const DATA = {
      "debia": "2026-11-15",
      "llego": "2026-11-16",
      "atraso": 1
+    },
+    {
+     "materia": "Medicina del Trabajo",
+     "programa": "Seguridad y Salud Ocupacional",
+     "lan": "2027-01-13",
+     "debia": "2026-11-15",
+     "llego": "2026-11-17",
+     "atraso": 2
+    },
+    {
+     "materia": "Identidad, reputación y gestión de comunidades virtuales",
+     "programa": "Marketing y Comunicación",
+     "lan": "2027-01-13",
+     "debia": "2026-11-15",
+     "llego": "2026-11-19",
+     "atraso": 4
+    },
+    {
+     "materia": "Gestión de Personas",
+     "programa": "Gestión de Proyectos",
+     "lan": "2026-12-02",
+     "debia": "2026-10-13",
+     "llego": "2026-11-19",
+     "atraso": 37
+    },
+    {
+     "materia": "Responsabilidad derivadas del control de recursos públicos",
+     "programa": "Derecho Procesal Penal y Litigación Oral",
+     "lan": "2027-01-13",
+     "debia": "2026-11-12",
+     "llego": "2026-11-19",
+     "atraso": 7
+    },
+    {
+     "materia": "Autopartes e insumos del sector automotriz",
+     "programa": "Ingeniería Automotriz",
+     "lan": "2027-01-11",
+     "debia": "2026-11-15",
+     "llego": "2026-11-19",
+     "atraso": 4
     }
    ],
    "calidad": null,
@@ -2141,11 +2285,15 @@ const DATA = {
       6.59,
       7.84,
       9.92,
-      12.75,
-      14.42,
-      16.0,
-      18.25,
-      18.58
+      12.42,
+      13.51,
+      15.01,
+      17.26,
+      17.59,
+      20.17,
+      21.84,
+      24.09,
+      26.67
      ],
      "vReal": [
       0,
@@ -2154,27 +2302,31 @@ const DATA = {
       7.0,
       9.5,
       11.67,
-      14.84,
-      17.84,
-      19.51,
-      23.34,
-      23.84
+      14.83,
+      17.83,
+      18.5,
+      22.33,
+      22.83,
+      24.5,
+      27.83,
+      30.25,
+      32.67
      ]
     }
    },
    "seguimiento": {
-    "corte": "16/11/2026",
-    "diasTranscurridos": 9,
+    "corte": "22/11/2026",
+    "diasTranscurridos": 13,
     "diasTotales": 19,
-    "dReal": 18.58,
-    "dProj": 19.67,
-    "vReal": 23.84,
-    "vProj": 26.0,
-    "dFalta": 19.42,
-    "vFalta": 14.0,
-    "dCapRestante": 19.0,
-    "ritmoNecesarioD": 1.022,
-    "ultimaSemana": "9–15 nov",
+    "dReal": 26.67,
+    "dProj": 28.67,
+    "vReal": 32.67,
+    "vProj": 38.0,
+    "dFalta": 11.33,
+    "vFalta": 5.17,
+    "dCapRestante": 10.0,
+    "ritmoNecesarioD": 1.133,
+    "ultimaSemana": "16–22 nov",
     "semanas": [
      {
       "label": "2–8 nov",
@@ -2191,79 +2343,89 @@ const DATA = {
       "dReal": 10.42,
       "vProj": 15,
       "vReal": 14.33
+     },
+     {
+      "label": "16–22 nov",
+      "dias": 4,
+      "dProj": 9.33,
+      "dReal": 9.42,
+      "vProj": 12,
+      "vReal": 9.83
      }
     ],
-    "completasMes": 20,
+    "completasMes": 29,
     "completasEsperadas": 41,
     "lote212": {
      "total": 33,
-     "completas": 12,
-     "produccion": 6,
-     "espera": 14,
-     "porIngresar": 1
+     "completas": 20,
+     "produccion": 7,
+     "espera": 6,
+     "porIngresar": 0
     },
     "loteEnero": {
      "total": 31,
-     "recibidas": 17,
-     "faltan": 14
+     "recibidas": 22,
+     "faltan": 9
     },
-    "desde": "17/11",
-    "finVideo": "23/11"
+    "desde": "23/11",
+    "finVideo": "24/11",
+    "finDiseno": "30/11",
+    "finLote": "Lun 30/11"
    },
    "textos": {
-    "lede": "Los lotes 11/11 y 30/11 se entregaron el 5 y el 6/11. Del lote 2/12 van 12 de 33, y la semana del 9/11 diseño llegó al 104 % de su meta y video al 96 %.",
+    "lede": "La semana del 16/11 diseño cumplió su meta (101 %) con un festivo y, desde el 20/11, una persona menos; video quedó en el 82 %. Gestión de Personas, la última materia del lote 2/12, llegó el 19/11 y ya está en producción.",
     "mejoro": [
      [
-      "Semana del 9/11",
-      "diseño al 104 % (la anterior, 84 %) y video al 96 % (antes, 86 %)"
+      "Semana del 16/11",
+      "diseño al 101 % de su meta, con festivo y vacaciones"
      ],
      [
-      "Lotes 11/11 y 30/11",
-      "entregados el 5 y el 6/11, con 6 y 24 días de anticipación"
+      "Lote 2/12",
+      "pasó de 11 a 20 de 33 materias completas en la semana"
      ],
      [
-      "Ciclo por materia",
-      "2,9 días en la semana del 2/11 y 4,3 en la del 9/11 (antes del 12/10: 6,7)"
+      "Horas por materia en diseño",
+      "17,2 h la semana del 16/11 (la anterior, 19,6 h)"
      ],
      [
       "Minutos por pieza",
-      "HTML 79 min y Genially 118, por debajo de la referencia"
+      "HTML 89 min y Genially 134, en la referencia o por debajo"
      ],
      [
-      "Capacidad de video",
-      "con 3 editoras, 3 materias por día hábil"
+      "Lote de enero",
+      "22 de 31 recibidas y una ya completa (Gestión Ambiental organizacional, que pasó del lote 2/12 al de enero)"
      ]
     ],
     "noMejoro": [
      [
-      "Horas por materia en diseño",
-      "19,0 h en noviembre y 19,6 h la semana del 9/11 (octubre: 17,3 h)"
+      "Video",
+      "82 % de su meta la semana del 16/11 (9,8 de 12 materias)"
      ],
      [
-      "Video",
-      "aún por debajo de la meta semanal (96 %)"
+      "Diferencia entre diseño y video",
+      "subió a 5,2 días la semana del 16/11 (la anterior, 1,7)"
+     ],
+     [
+      "Lote 2/12 en diseño",
+      "faltan 11,3 materias y quedan 10,0 de capacidad hasta el viernes 27/11"
      ],
      [
       "Llegada tarde",
-      "4 materias del lote 2/12 llegaron con 22 a 24 días de atraso; falta 1 por llegar"
-     ],
-     [
-      "Día bajo",
-      "el 12/11 diseño produjo 1,6 materias frente a 2,0 de meta diaria"
+      "Gestión de Personas llegó el 19/11, 37 días después de lo previsto"
      ]
     ],
     "sigue": [
      [
-      "Lote 2/12 el viernes 27/11",
-      "diseño necesita el 102 % de su meta desde el 17/11"
+      "Lote 2/12",
+      "a la meta, diseño lo termina el lunes 30/11, 2 días antes del lanzamiento"
      ],
      [
-      "Del 17 al 19/11",
-      "únicos días con los 7 diseñadores antes del 27/11"
+      "Video",
+      "termina el lote 2/12 hacia el 24/11 y sigue con enero"
      ],
      [
       "Lote de enero",
-      "17 de 31 recibidas al 16/11"
+      "faltan 9 de 31 por llegar"
      ],
      [
       "Cierre de noviembre",
@@ -2275,48 +2437,34 @@ const DATA = {
       {
        "t": "pro",
        "f": "Proyección",
-       "q": "Lote 2/12 el viernes 27/11",
-       "d": "Al 16/11 faltan 19,4 materias de diseño y hay 19,0 de capacidad a la meta hasta el 27/11.",
-       "a": "<b>Diseño al 102 % de su meta desde el 17/11</b>: ≈2,4 materias por día hábil del 17 al 19/11 (7 personas) y ≈2,0 desde el 20/11 (6)."
+       "q": "Lote 2/12 completo antes del lanzamiento",
+       "d": "Al 22/11 faltan 11,3 materias de diseño. A la meta (2,0 por día con 6 diseñadores) se terminan el lunes 30/11; para el viernes 27/11 haría falta el 113 %.",
+       "a": "<b>Sostener al menos 2 materias de diseño por día hábil</b> hasta cerrar el lote; el dashboard ya asigna primero el lote 2/12."
       },
       {
        "t": "pro",
        "f": "Proyección",
-       "q": "Aprovechar del 17 al 19/11",
-       "d": "Son los únicos 3 días hábiles con los 7 diseñadores antes del 27/11.",
-       "a": "<b>Producir ≈7,1 materias del 17 al 19/11.</b>"
-      },
-      {
-       "t": "pro",
-       "f": "Proyección",
-       "q": "Video termina antes",
-       "d": "Faltan 14,0 materias de video del lote 2/12.",
-       "a": "<b>A la meta termina el 23/11</b> y sigue con el lote de enero."
+       "q": "Video pasa a enero",
+       "d": "Faltan 5,2 materias de video del lote 2/12; a su meta las termina el martes 24/11.",
+       "a": "<b>Desde el 24/11, video sigue con el lote de enero</b>, que tiene 22 materias recibidas."
       }
      ],
      "dis": [
       {
        "t": "dis",
        "f": "Diseño",
-       "q": "Las horas por materia subieron",
-       "d": "19,0 h por materia en noviembre y 19,6 h la semana del 9/11 (octubre: 17,3 h).",
+       "q": "Horas por materia aún sobre la meta",
+       "d": "18,3 h por materia en noviembre (octubre: 17,3 h); la semana del 16/11 bajó a 17,2 h.",
        "a": "<b>Estandarizar Genially y HTML</b> con el método más rápido validado. Meta: 15 h."
-      },
-      {
-       "t": "dis",
-       "f": "Diseño",
-       "q": "Días con poca producción",
-       "d": "El 12/11 diseño produjo 1,6 materias frente a 2,0 de meta diaria; el 13/11 subió a 2,3.",
-       "a": "<b>Revisar cada mañana</b> en el dashboard quién no tiene timer activo y por qué."
       }
      ],
      "vid": [
       {
        "t": "vid",
        "f": "Video",
-       "q": "Video cerca de la meta",
-       "d": "86 % (2–8/11) y 96 % (9–15/11).",
-       "a": "<b>6 videos por día por editora.</b> Al cerrar el lote 2/12, pasar al lote de enero."
+       "q": "Video por debajo de su meta",
+       "d": "86 %, 96 % y 82 % en las tres semanas de noviembre.",
+       "a": "<b>6 videos por día por editora.</b> Revisar cada mañana que las 3 tengan timer activo."
       }
      ],
      "cal": [
@@ -2332,16 +2480,16 @@ const DATA = {
       {
        "t": "ent",
        "f": "Entrada",
-       "q": "Falta 1 materia del lote 2/12",
-       "d": "Gestión de Personas aún no ingresa a la fábrica.",
-       "a": "<b>Confirmar su fecha de llegada</b> para no comprometer el 27/11."
+       "q": "Gestión de Personas llegó tarde",
+       "d": "Ingresó el 19/11, 37 días después de lo previsto; ya está en producción.",
+       "a": "<b>Acordar con instruccional una fecha firme por lote</b> y avisar a la fábrica cada martes cuántas llegan."
       },
       {
        "t": "ent",
        "f": "Entrada",
        "q": "Lote de enero",
-       "d": "17 de 31 recibidas al 16/11; el ingreso previsto terminaba el 15/11.",
-       "a": "<b>Confirmar con instruccional las 14 restantes.</b>"
+       "d": "22 de 31 recibidas al 22/11; el ingreso previsto terminaba el 15/11.",
+       "a": "<b>Confirmar con instruccional las fechas de las 9 restantes.</b>"
       }
      ]
     },
@@ -2351,8 +2499,8 @@ const DATA = {
      "El promedio del mes esconde la tendencia semanal.",
      "La «velocidad promedio» del dashboard cuenta días calendario, con fines de semana y festivos."
     ],
-    "audio": "Avance de noviembre al 15 de noviembre. Van 20 materias completas de las 41 esperadas: los lotes del 11 y del 30 de noviembre ya se entregaron, y del lote del 2 de diciembre van 12 de 33. La semana del 9 de noviembre diseño llegó al 104 por ciento de su meta y video al 96 por ciento, mejor que la semana anterior. Para que el lote del 2 de diciembre salga completo el viernes 27, diseño necesita trabajar al 102 por ciento de su meta desde el 17 de noviembre, con 7 diseñadores hasta el 19 y con 6 desde el 20. Video termina el lote hacia el 23 de noviembre y luego sigue con enero. A vigilar: las horas por materia en diseño, que subieron a 19.",
-    "titular": "Van 20 de las 41 materias del mes y el lote 2/12 sigue en camino al viernes 27/11"
+    "audio": "Avance de noviembre al 22 de noviembre. Van 29 materias completas de las 41 esperadas, y del lote del 2 de diciembre van 20 de 33. La semana del 16 de noviembre diseño cumplió su meta, al 101 por ciento, aun con el festivo y una persona menos desde el viernes; video quedó en el 82 por ciento. A diseño le faltan 11,3 materias del lote: trabajando a la meta, las termina el lunes 30 de noviembre, dos días antes del lanzamiento. Video termina su parte hacia el 24 de noviembre y sigue con el lote de enero, que ya tiene 22 de 31 materias recibidas.",
+    "titular": "Van 29 materias completas en noviembre; el lote 2/12 lleva 20 de 33 y, a la meta, sale completo el lunes 30/11"
    },
    "lotesMes": [
     {
@@ -2368,7 +2516,12 @@ const DATA = {
     {
      "lote": "2/12",
      "esperadas": 33,
-     "completas": 12
+     "completas": 20
+    },
+    {
+     "lote": "Enero",
+     "esperadas": 1,
+     "completas": 1
     }
    ]
   }
@@ -2484,7 +2637,7 @@ function render(){
   if(wk){const g={};comps.forEach(x=>{g[x.lan]=(g[x.lan]||0)+1});LT=Object.keys(g).sort().map(l=>({lote:l.split('-').reverse().slice(0,2).join('/'),esperadas:g[l],completas:g[l]}))}
   else LT=M.lotesMes||(M.porLote||[]).map(l=>({lote:l.lan.split('-').reverse().slice(0,2).join('/'),esperadas:l.n,completas:l.n}));
   const totE=LT.reduce((a,l)=>a+l.esperadas,0), totC=LT.reduce((a,l)=>a+l.completas,0);
-  const lb=$('#lbnum'); lb.innerHTML=`<b>0</b>${wk?'materias completas en la semana, por lote de lanzamiento':(totE>totC?`de ${totE} materias completas que se esperan en el mes`:'materias completas, por lote de lanzamiento')}`;
+  const lb=$('#lbnum'); lb.innerHTML=`<b>0</b>${wk?'materias completas en la semana, por lote de lanzamiento':(totE>totC?`de ${totE} materias de los lotes del mes ya completas`:'materias completas, por lote de lanzamiento')}`;
   countUp(lb.querySelector('b'),totC,'');
   const lw=$('#lotes'); lw.setAttribute('aria-label',LT.map(l=>`Lote ${l.lote}: ${l.completas} de ${l.esperadas}`).join('; '));
   $('#lotes-leg').innerHTML=LT.map(l=>`<li><b>${l.lote}</b> ${wk?l.completas:l.completas+' de '+l.esperadas}</li>`).join('');
@@ -2495,7 +2648,7 @@ function render(){
   mk('c-antic',{type:'bar',data:{labels:['7 días o menos','8 a 14 días','15 días o más'],datasets:[{data:[k.antic7,k.antic8,k.antic15],backgroundColor:[c.warn,c.dis,c.ok],borderRadius:6,maxBarThickness:70}]},options:{maintainAspectRatio:false,scales:{y:{beginAtZero:true,grid:{color:c.line},ticks:{precision:0}},x:{grid:{display:false}}},plugins:{vlabels:{on:true,color:c.ink},tooltip:{callbacks:{label:t=>`${t.raw} materias`}}}}});
   const dP=k.dProd/k.dMeta, vP=k.vProd/k.vMeta;
   const Gs=M.seguimiento;
-  const third=(M.enCurso&&!wk)?kpi('Vie 27/11','Lote 2/12 completo',`si diseño trabaja al ${Math.round(Gs.ritmoNecesarioD*100)} % de su meta desde el ${Gs.desde}`,'flat'):kpi(k.anticMed==null?'—':fmt(k.anticMed,k.anticMed%1?1:0)+' días','Anticipación mediana al lanzamiento',k.anticMin==null?'':`mínimo ${k.anticMin} días`,'flat');
+  const third=(M.enCurso&&!wk)?(Gs.ritmoNecesarioD>1.05&&Gs.finLote?kpi(Gs.finLote,'Lote 2/12 completo, a la meta',`para el viernes 27/11 haría falta el ${Math.round(Gs.ritmoNecesarioD*100)} % desde el ${Gs.desde}`,'flat'):kpi('Vie 27/11','Lote 2/12 completo',`si diseño trabaja al ${Math.round(Gs.ritmoNecesarioD*100)} % de su meta desde el ${Gs.desde}`,'flat')):kpi(k.anticMed==null?'—':fmt(k.anticMed,k.anticMed%1?1:0)+' días','Anticipación mediana al lanzamiento',k.anticMin==null?'':`mínimo ${k.anticMin} días`,'flat');
   $('#kpis').innerHTML=[
     kpi(pct(dP),'Diseño frente a su meta',`${fmt(k.dProd)} de ${fmt(k.dMeta)} materias`,'flat',dP,c.dis),
     kpi(pct(vP),'Video (editoras) frente a su meta',`${fmt(k.vProd)} de ${k.vMeta} materias`,'flat',vP,c.vid),
@@ -2593,14 +2746,14 @@ function render(){
   // PROYECCION
   const P=M.proyeccion, G=M.seguimiento;
   const dRatio=G.dReal/G.dProj, vRatio=G.vReal/G.vProj;
-  $('#p-find').textContent=`${P.mes}: el lote 2/12 sale completo el viernes 27/11 si diseño trabaja al ${Math.round(G.ritmoNecesarioD*100)} % de su meta desde el ${G.desde}`;
+  $('#p-find').textContent=(G.ritmoNecesarioD>1.05&&G.finLote)?`${P.mes}: a la meta, el lote 2/12 sale completo el ${G.finLote.replace('Lun','lunes')}, antes de su lanzamiento; para el 27/11 diseño necesitaría el ${Math.round(G.ritmoNecesarioD*100)} %`:`${P.mes}: el lote 2/12 sale completo el viernes 27/11 si diseño trabaja al ${Math.round(G.ritmoNecesarioD*100)} % de su meta desde el ${G.desde}`;
   $('#p-sub').textContent=`Proyección hecha con datos al 31/10 y seguimiento al ${G.corte}. ${P.dh} días hábiles (${P.festivos}). Capacidad del mes a la meta: diseño ${fmt(P.capD)} materias y video ${P.capV}.`;
   const lamp=(r,txt,det)=>`<div class="card sem"><span class="lamp" style="background:${r>=1?c.ok:r>=.85?c.warn:c.bad}"></span><div><div class="kpi"><span class="v">${pct(r)}</span><span class="l">${txt}</span><span class="d flat">${det}</span></div></div></div>`;
   $('#p-sem').innerHTML=lamp(dRatio,'Diseño frente a lo proyectado',`${fmt(G.dReal)} de ${fmt(G.dProj)} materias al ${G.corte}; semana del ${G.ultimaSemana}: ${pct(G.semanas[G.semanas.length-1].dReal/G.semanas[G.semanas.length-1].dProj)}`)+lamp(vRatio,'Video frente a lo proyectado',`${fmt(G.vReal)} de ${fmt(G.vProj)} materias al ${G.corte}`)+lamp(G.completasMes/ (P.esperadasMes*G.diasTranscurridos/G.diasTotales),'Materias completas frente al ritmo esperado',`${G.completasMes} de ${P.esperadasMes} esperadas en el mes; lote 2/12: ${G.lote212.completas} de ${G.lote212.total}`);
   const Dd=P.diario, nReal=Dd.dReal.length;
   const burn=(id,proj,real,need,color)=>mk(id,{type:'line',data:{labels:Dd.fechas,datasets:[{label:'A la meta',data:proj.map(v=>Math.max(0,+(need-v).toFixed(2))),borderColor:c.ink3,borderDash:[6,5],pointRadius:0,borderWidth:2,tension:0},{label:'Real',data:real.map(v=>+(need-v).toFixed(2)),borderColor:color,backgroundColor:color,pointRadius:4,borderWidth:3,tension:.2}]},options:{maintainAspectRatio:false,interaction:{mode:'index',intersect:false},scales:{y:{beginAtZero:true,grid:{color:c.line},title:{display:true,text:'materias pendientes'}},x:{grid:{display:false},ticks:{maxRotation:0,autoSkip:true,font:{size:11}}}},plugins:{legend:{display:true,position:'top',align:'start',labels:{boxWidth:14,boxHeight:3}},tooltip:{callbacks:{label:t=>`${t.dataset.label}: faltan ${fmt(t.raw)}`}},hline:{y:0,color:c.ok,label:''}}}});
   burn('c-pd',Dd.dProj,Dd.dReal,P.necesidad,c.dis); burn('c-pv',Dd.vProj,Dd.vReal,P.necesidadV,c.vid);
-  $('#p-lotes').innerHTML='<tr><th>Lote</th><th class="n">Materias</th><th>Diseño</th><th>Video</th><th>Lote completo</th></tr>'+P.lotes.map(l=>`<tr><td>${l.lote}</td><td class="n">${l.materias}</td><td>${l.real?l.fecha:l.fechaD}</td><td>${l.real?l.fecha:l.fechaV}${(!l.real&&l.lote=='2/12'&&G.finVideo&&G.finVideo!==l.fechaV.slice(-5))?`<span class="est">estimado al ${G.corte.slice(0,5)}: ${G.finVideo}</span>`:''}</td><td>${l.real?`<span class="pill ok">${l.fecha} · real</span>`:`<span class="pill n">${l.fecha}</span>`}</td></tr>`).join('');
+  $('#p-lotes').innerHTML='<tr><th>Lote</th><th class="n">Materias</th><th>Diseño</th><th>Video</th><th>Lote completo</th></tr>'+P.lotes.map(l=>`<tr><td>${l.lote}</td><td class="n">${l.materias}</td><td>${l.real?l.fecha:l.fechaD}${(!l.real&&l.lote=='2/12'&&G.finDiseno&&G.finDiseno!==l.fechaD.slice(-5))?`<span class="est">estimado al ${G.corte.slice(0,5)}: ${G.finDiseno}</span>`:''}</td><td>${l.real?l.fecha:l.fechaV}${(!l.real&&l.lote=='2/12'&&G.finVideo&&G.finVideo!==l.fechaV.slice(-5))?`<span class="est">estimado al ${G.corte.slice(0,5)}: ${G.finVideo}</span>`:''}</td><td>${l.real?`<span class="pill ok">${l.fecha} · real</span>`:`<span class="pill n">${l.fecha}</span>${(l.lote=='2/12'&&G.finLote&&G.ritmoNecesarioD>1.05)?`<span class="est">estimado al ${G.corte.slice(0,5)}: ${G.finLote.toLowerCase()}</span>`:''}`}</td></tr>`).join('');
   $('#p-segtab').innerHTML='<tr><th>Semana</th><th class="n">Diseño real / meta</th><th class="n">%</th><th class="n">Video real / meta</th><th class="n">%</th></tr>'+G.semanas.map(w=>{const a=w.dReal/w.dProj,b=w.vReal/w.vProj;return `<tr><td>${w.label}</td><td class="n">${fmt(w.dReal,2)} / ${fmt(w.dProj,2)}</td><td class="n"><span class="pill ${sc(a)}">${pct(a)}</span></td><td class="n">${fmt(w.vReal,2)} / ${fmt(w.vProj,0)}</td><td class="n"><span class="pill ${sc(b)}">${pct(b)}</span></td></tr>`}).join('');
   $('#acts-pro').innerHTML=acts(T.acciones.pro);
 
