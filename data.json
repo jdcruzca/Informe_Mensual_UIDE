@@ -1,5 +1,5 @@
 {
- "actualizado": "12/11/2026",
+ "actualizado": "23/11/2026",
  "semanas": [
   {
    "label": "14–20 sep",
@@ -114,17 +114,31 @@
    "llegadas": null
   },
   {
-   "label": "9–11 nov",
+   "label": "9–15 nov",
    "ini": "2026-11-09",
-   "fin": "2026-11-11",
-   "dh": 3,
-   "dProd": 6.58,
-   "vProd": 8.33,
-   "dHoras": 123,
-   "vHoras": 45,
-   "comp": 4,
-   "ciclo": 4.6,
-   "brecha": 1.3,
+   "fin": "2026-11-15",
+   "dh": 5,
+   "dProd": 10.42,
+   "vProd": 14.33,
+   "dHoras": 204,
+   "vHoras": 68,
+   "comp": 9,
+   "ciclo": 4.3,
+   "brecha": 1.7,
+   "llegadas": null
+  },
+  {
+   "label": "16–22 nov",
+   "ini": "2026-11-16",
+   "fin": "2026-11-22",
+   "dh": 4,
+   "dProd": 9.42,
+   "vProd": 9.83,
+   "dHoras": 162,
+   "vHoras": 40,
+   "comp": 9,
+   "ciclo": 6.3,
+   "brecha": 5.2,
    "llegadas": null
   }
  ],
@@ -156,11 +170,15 @@
     "vTot": 37.42,
     "vCerr": 40,
     "vHoras": 198.9,
-    "vHxM": 5.4,
+    "vHxM": 5.3,
     "llegadas": 40,
     "llegadasTarde": 32,
-    "atrasoMed": 10,
-    "atrasoMax": 28
+    "atrasoMed": 10.0,
+    "atrasoMax": 28,
+    "ciclo": 4.3,
+    "cicloAntes": 6.7,
+    "brecha": 1.0,
+    "brechaAntes": "4–8"
    },
    "semanas": [
     {
@@ -175,7 +193,11 @@
      "vTot": 5.92,
      "vHoras": 39.2,
      "vCerr": 6,
-     "comp": 2
+     "comp": 2,
+     "ini": "2026-10-01",
+     "fin": "2026-10-04",
+     "ciclo": 5.6,
+     "brecha": 3.7
     },
     {
      "label": "5–11 oct",
@@ -189,7 +211,11 @@
      "vTot": 5.0,
      "vHoras": 28.6,
      "vCerr": 5,
-     "comp": 11
+     "comp": 11,
+     "ini": "2026-10-05",
+     "fin": "2026-10-11",
+     "ciclo": 5.2,
+     "brecha": 4.5
     },
     {
      "label": "12–18 oct",
@@ -203,7 +229,11 @@
      "vTot": 4.84,
      "vHoras": 30.1,
      "vCerr": 6,
-     "comp": 4
+     "comp": 4,
+     "ini": "2026-10-12",
+     "fin": "2026-10-18",
+     "ciclo": 6.9,
+     "brecha": 4.0
     },
     {
      "label": "19–25 oct",
@@ -217,7 +247,11 @@
      "vTot": 8.16,
      "vHoras": 43.9,
      "vCerr": 10,
-     "comp": 10
+     "comp": 10,
+     "ini": "2026-10-19",
+     "fin": "2026-10-25",
+     "ciclo": 4.4,
+     "brecha": 0.9
     },
     {
      "label": "26–31 oct",
@@ -231,7 +265,11 @@
      "vTot": 13.5,
      "vHoras": 57.1,
      "vCerr": 13,
-     "comp": 13
+     "comp": 13,
+     "ini": "2026-10-26",
+     "fin": "2026-10-31",
+     "ciclo": 4.8,
+     "brecha": 0.9
     }
    ],
    "porLote": [
@@ -906,8 +944,15 @@
       6.59,
       7.84,
       9.92,
-      12.75,
-      14.42
+      12.42,
+      13.51,
+      15.01,
+      17.26,
+      17.59,
+      20.17,
+      21.84,
+      24.09,
+      26.67
      ],
      "vReal": [
       0,
@@ -916,23 +961,31 @@
       7.0,
       9.5,
       11.67,
-      14.84,
-      17.84
+      14.83,
+      17.83,
+      18.5,
+      22.33,
+      22.83,
+      24.5,
+      27.83,
+      30.25,
+      32.67
      ]
     }
    },
    "seguimiento": {
-    "corte": "11/11/2026",
-    "diasTranscurridos": 7,
+    "corte": "22/11/2026",
+    "diasTranscurridos": 13,
     "diasTotales": 19,
-    "dReal": 14.42,
-    "dProj": 15.33,
-    "vReal": 17.84,
-    "vProj": 20.0,
-    "dFalta": 23.58,
-    "vFalta": 20.0,
-    "dCapRestante": 23.33,
-    "ritmoNecesarioD": 1.011,
+    "dReal": 26.67,
+    "dProj": 28.67,
+    "vReal": 32.67,
+    "vProj": 38.0,
+    "dFalta": 11.33,
+    "vFalta": 5.17,
+    "dCapRestante": 10.0,
+    "ritmoNecesarioD": 1.133,
+    "ultimaSemana": "16–22 nov",
     "semanas": [
      {
       "label": "2–8 nov",
@@ -943,29 +996,1207 @@
       "vReal": 9.5
      },
      {
-      "label": "9–11 nov",
-      "dias": 3,
-      "dProj": 6,
-      "dReal": 6.58,
-      "vProj": 9,
-      "vReal": 8.33
+      "label": "9–15 nov",
+      "dias": 5,
+      "dProj": 10.0,
+      "dReal": 10.42,
+      "vProj": 15,
+      "vReal": 14.33
+     },
+     {
+      "label": "16–22 nov",
+      "dias": 4,
+      "dProj": 9.33,
+      "dReal": 9.42,
+      "vProj": 12,
+      "vReal": 9.83
      }
     ],
-    "completasMes": 15,
+    "completasMes": 29,
     "completasEsperadas": 41,
     "lote212": {
      "total": 33,
-     "completas": 7,
-     "produccion": 8,
-     "espera": 15,
-     "porIngresar": 1
+     "completas": 20,
+     "produccion": 7,
+     "espera": 6,
+     "porIngresar": 0
     },
     "loteEnero": {
      "total": 31,
-     "recibidas": 14,
-     "faltan": 17
+     "recibidas": 22,
+     "faltan": 9
+    },
+    "desde": "23/11",
+    "finVideo": "24/11",
+    "finDiseno": "30/11",
+    "finLote": "Lun 30/11"
+   },
+   "completadas": [
+    {
+     "materia": "Gestión de la cadena de suministro",
+     "completada": "2026-10-02",
+     "lan": "2026-10-12",
+     "antic": 10
+    },
+    {
+     "materia": "Seguridad corporativa y patrimonial",
+     "completada": "2026-10-02",
+     "lan": "2026-10-21",
+     "antic": 19
+    },
+    {
+     "materia": "Respuesta psicopedagógica en las dificultades del aprendizaje",
+     "completada": "2026-10-05",
+     "lan": "2026-10-21",
+     "antic": 16
+    },
+    {
+     "materia": "Urbanismo y Paisaje",
+     "completada": "2026-10-05",
+     "lan": "2026-10-14",
+     "antic": 9
+    },
+    {
+     "materia": "Criptografía y Criptografía Post-Cuántica",
+     "completada": "2026-10-05",
+     "lan": "2026-11-11",
+     "antic": 37
+    },
+    {
+     "materia": "Técnicas de Procesamiento de la Escena",
+     "completada": "2026-10-06",
+     "lan": "2026-10-14",
+     "antic": 8
+    },
+    {
+     "materia": "Liderazgo calidad y excelencia",
+     "completada": "2026-10-06",
+     "lan": "2026-11-11",
+     "antic": 36
+    },
+    {
+     "materia": "Introducción al tráfico y a la seguridad vial",
+     "completada": "2026-10-07",
+     "lan": "2026-10-14",
+     "antic": 7
+    },
+    {
+     "materia": "Recursos financieros en salud",
+     "completada": "2026-10-08",
+     "lan": "2026-10-14",
+     "antic": 6
+    },
+    {
+     "materia": "Gestión de la Innovación",
+     "completada": "2026-10-08",
+     "lan": "2026-10-14",
+     "antic": 6
+    },
+    {
+     "materia": "Acompañamiento pedagógico y mejora de la enseñanza",
+     "completada": "2026-10-09",
+     "lan": "2026-10-21",
+     "antic": 12
+    },
+    {
+     "materia": "Data Science y Análisis de Tendencias Políticas",
+     "completada": "2026-10-09",
+     "lan": "2026-10-21",
+     "antic": 12
+    },
+    {
+     "materia": "Aplicaciones de IA en contextos educativos II",
+     "completada": "2026-10-10",
+     "lan": "2026-10-21",
+     "antic": 11
+    },
+    {
+     "materia": "Programación y control de producción",
+     "completada": "2026-10-15",
+     "lan": "2026-11-09",
+     "antic": 25
+    },
+    {
+     "materia": "Informática Forense",
+     "completada": "2026-10-15",
+     "lan": "2026-11-01",
+     "antic": 17
+    },
+    {
+     "materia": "Gestión y Administración Deportiva",
+     "completada": "2026-10-15",
+     "lan": "2026-11-09",
+     "antic": 25
+    },
+    {
+     "materia": "Innovación y tecnología educativa",
+     "completada": "2026-10-16",
+     "lan": "2026-11-11",
+     "antic": 26
+    },
+    {
+     "materia": "Factor humano en la conducción",
+     "completada": "2026-10-19",
+     "lan": "2026-11-11",
+     "antic": 23
+    },
+    {
+     "materia": "Energía hidráulica",
+     "completada": "2026-10-20",
+     "lan": "2026-11-11",
+     "antic": 22
+    },
+    {
+     "materia": "Análisis Económico de la Salud Pública",
+     "completada": "2026-10-20",
+     "lan": "2026-11-11",
+     "antic": 22
+    },
+    {
+     "materia": "Procesos Especiales I y II",
+     "completada": "2026-10-21",
+     "lan": "2026-11-11",
+     "antic": 21
+    },
+    {
+     "materia": "Dirección Estratégica de Empresas de Seguros",
+     "completada": "2026-10-21",
+     "lan": "2026-11-11",
+     "antic": 21
+    },
+    {
+     "materia": "Planning y responsabilidad social corporativa",
+     "completada": "2026-10-22",
+     "lan": "2026-11-11",
+     "antic": 20
+    },
+    {
+     "materia": "Inmunonutrición, microbiota intestinal y nutrición deportiva",
+     "completada": "2026-10-22",
+     "lan": "2026-11-11",
+     "antic": 20
+    },
+    {
+     "materia": "Promoción y creación de contenidos",
+     "completada": "2026-10-23",
+     "lan": "2026-11-11",
+     "antic": 19
+    },
+    {
+     "materia": "Cartografía y Representación gráfica del espacio urbano",
+     "completada": "2026-10-23",
+     "lan": "2026-11-11",
+     "antic": 19
+    },
+    {
+     "materia": "Machine Learning y Ciberseguridad (Security Analytics)",
+     "completada": "2026-10-23",
+     "lan": "2026-11-11",
+     "antic": 19
+    },
+    {
+     "materia": "Redes sociales y community management",
+     "completada": "2026-10-26",
+     "lan": "2026-11-11",
+     "antic": 16
+    },
+    {
+     "materia": "Transiciones hacia la sostenibilidad organizacional",
+     "completada": "2026-10-27",
+     "lan": "2026-11-11",
+     "antic": 15
+    },
+    {
+     "materia": "Economía del comportamiento",
+     "completada": "2026-10-27",
+     "lan": "2026-11-11",
+     "antic": 15
+    },
+    {
+     "materia": "Geointeligencia Aplicada a los Destinos",
+     "completada": "2026-10-27",
+     "lan": "2026-11-11",
+     "antic": 15
+    },
+    {
+     "materia": "Servicios hospitalarios y ambulatorios",
+     "completada": "2026-10-27",
+     "lan": "2026-11-11",
+     "antic": 15
+    },
+    {
+     "materia": "Ciencia de Datos e IA en Finanzas",
+     "completada": "2026-10-28",
+     "lan": "2026-11-11",
+     "antic": 14
+    },
+    {
+     "materia": "Planificación de Ventas y Operaciones (S&OP)",
+     "completada": "2026-10-29",
+     "lan": "2026-11-11",
+     "antic": 13
+    },
+    {
+     "materia": "Riesgos del trabajo",
+     "completada": "2026-10-29",
+     "lan": "2026-11-11",
+     "antic": 13
+    },
+    {
+     "materia": "Protección de datos en el ámbito público",
+     "completada": "2026-10-29",
+     "lan": "2026-11-11",
+     "antic": 13
+    },
+    {
+     "materia": "Higiene Industrial",
+     "completada": "2026-10-30",
+     "lan": "2026-11-11",
+     "antic": 12
+    },
+    {
+     "materia": "Analítica de entornos web y Apps",
+     "completada": "2026-10-30",
+     "lan": "2026-11-11",
+     "antic": 12
+    },
+    {
+     "materia": "Computación Bioinspirada",
+     "completada": "2026-10-30",
+     "lan": "2026-11-11",
+     "antic": 12
+    },
+    {
+     "materia": "SCRUM",
+     "completada": "2026-10-30",
+     "lan": "2026-11-11",
+     "antic": 12
     }
-   }
+   ]
+  },
+  "2026-11": {
+   "id": "2026-11",
+   "nombre": "Noviembre 2026 (en curso)",
+   "mesCorto": "noviembre",
+   "periodo": "1 al 30 de noviembre de 2026 · datos al 22/11",
+   "dh": 19,
+   "festivos": "2/11 y 16/11",
+   "corte": "22/11/2026",
+   "enCurso": true,
+   "dhTranscurridos": 13,
+   "kpi": {
+    "completadas": 29,
+    "prevCompletadas": 40,
+    "anticMed": 15,
+    "anticMin": 6,
+    "anticMax": 62,
+    "antic15": 17,
+    "antic8": 8,
+    "antic7": 4,
+    "dMeta": 28.67,
+    "dProd": 27.68,
+    "dCerr": 28,
+    "dHoras": 507.7,
+    "dHxM": 18.3,
+    "vMeta": 38,
+    "vProd": 33.66,
+    "vTot": 33.66,
+    "vCerr": 36,
+    "vHoras": 178.3,
+    "vHxM": 5.3,
+    "ciclo": 5.0,
+    "cicloAntes": 6.7,
+    "brecha": 3.2,
+    "brechaAntes": "4–8",
+    "llegadas": 23,
+    "llegadasTarde": 11,
+    "atrasoMed": 7,
+    "atrasoMax": 37
+   },
+   "semanas": [
+    {
+     "label": "1–8 nov",
+     "ini": "2026-11-01",
+     "fin": "2026-11-08",
+     "dh": 4,
+     "dMeta": 9.33,
+     "dProd": 7.84,
+     "dHoras": 142.0,
+     "dCerr": 8,
+     "vMeta": 11,
+     "vProd": 9.5,
+     "vTot": 9.5,
+     "vHoras": 71.0,
+     "vCerr": 11,
+     "comp": 11,
+     "ciclo": 2.9,
+     "brecha": 1.2
+    },
+    {
+     "label": "9–15 nov",
+     "ini": "2026-11-09",
+     "fin": "2026-11-15",
+     "dh": 5,
+     "dMeta": 10.0,
+     "dProd": 10.42,
+     "dHoras": 204.1,
+     "dCerr": 9,
+     "vMeta": 15,
+     "vProd": 14.33,
+     "vTot": 14.33,
+     "vHoras": 67.7,
+     "vCerr": 15,
+     "comp": 9,
+     "ciclo": 4.3,
+     "brecha": 1.7
+    },
+    {
+     "label": "16–22 nov",
+     "ini": "2026-11-16",
+     "fin": "2026-11-22",
+     "dh": 4,
+     "dMeta": 9.33,
+     "dProd": 9.42,
+     "dHoras": 161.6,
+     "dCerr": 11,
+     "vMeta": 12,
+     "vProd": 9.83,
+     "vTot": 9.83,
+     "vHoras": 39.7,
+     "vCerr": 10,
+     "comp": 9,
+     "ciclo": 6.3,
+     "brecha": 5.2
+    }
+   ],
+   "porLote": [
+    {
+     "lan": "2026-11-11",
+     "n": 6,
+     "antic": 6
+    },
+    {
+     "lan": "2026-11-30",
+     "n": 2,
+     "antic": 24.5
+    },
+    {
+     "lan": "2026-12-02",
+     "n": 20,
+     "antic": 19.0
+    }
+   ],
+   "completadas": [
+    {
+     "materia": "Teoría y práctica de los derechos fundamentales",
+     "completada": "2026-11-01",
+     "lan": "2026-11-11",
+     "antic": 10
+    },
+    {
+     "materia": "Aspectos legales",
+     "completada": "2026-11-03",
+     "lan": "2026-11-11",
+     "antic": 8
+    },
+    {
+     "materia": "Desarrollo Sostenible, Cambio Climático y la Gestión de Riesgos",
+     "completada": "2026-11-05",
+     "lan": "2026-11-11",
+     "antic": 6
+    },
+    {
+     "materia": "Machine Learning No Supervisado y Análisis Multivariante",
+     "completada": "2026-11-05",
+     "lan": "2026-11-11",
+     "antic": 6
+    },
+    {
+     "materia": "Estado y Desarrollo",
+     "completada": "2026-11-05",
+     "lan": "2026-11-11",
+     "antic": 6
+    },
+    {
+     "materia": "HR Analytics y herramientas de Gestión",
+     "completada": "2026-11-05",
+     "lan": "2026-11-11",
+     "antic": 6
+    },
+    {
+     "materia": "Manejo de Instalaciones y Gestión de Eventos Deportivos",
+     "completada": "2026-11-05",
+     "lan": "2026-11-30",
+     "antic": 25
+    },
+    {
+     "materia": "Procedimiento de juzgamiento de adolescentes",
+     "completada": "2026-11-05",
+     "lan": "2026-12-02",
+     "antic": 27
+    },
+    {
+     "materia": "Ergonomía y Bienestar Laboral",
+     "completada": "2026-11-06",
+     "lan": "2026-12-02",
+     "antic": 26
+    },
+    {
+     "materia": "Finanzas y Gestión Comercial Automotriz",
+     "completada": "2026-11-06",
+     "lan": "2026-11-30",
+     "antic": 24
+    },
+    {
+     "materia": "Ingeniería y Arquitectura de Datos Modernas",
+     "completada": "2026-11-06",
+     "lan": "2026-12-02",
+     "antic": 26
+    },
+    {
+     "materia": "Gestión de Riesgos e Impactos Ambientales",
+     "completada": "2026-11-09",
+     "lan": "2026-12-02",
+     "antic": 23
+    },
+    {
+     "materia": "Marketing estratégico y el consumidor contemporáneo",
+     "completada": "2026-11-10",
+     "lan": "2026-12-02",
+     "antic": 22
+    },
+    {
+     "materia": "Cloud Computing para IA y Ciencia de Datos",
+     "completada": "2026-11-11",
+     "lan": "2026-12-02",
+     "antic": 21
+    },
+    {
+     "materia": "Gobernanza Digital en la ciudad inteligente",
+     "completada": "2026-11-11",
+     "lan": "2026-12-02",
+     "antic": 21
+    },
+    {
+     "materia": "Gestión del Riesgo Financiero",
+     "completada": "2026-11-12",
+     "lan": "2026-12-02",
+     "antic": 20
+    },
+    {
+     "materia": "Sistemas de información en salud",
+     "completada": "2026-11-12",
+     "lan": "2026-12-02",
+     "antic": 20
+    },
+    {
+     "materia": "Gestión Ambiental organizacional",
+     "completada": "2026-11-12",
+     "lan": "2027-01-13",
+     "antic": 62
+    },
+    {
+     "materia": "Turismo Sostenible y Desarrollo Territorial",
+     "completada": "2026-11-13",
+     "lan": "2026-12-02",
+     "antic": 19
+    },
+    {
+     "materia": "Órganos y procesos de la justicia constitucional",
+     "completada": "2026-11-13",
+     "lan": "2026-12-02",
+     "antic": 19
+    },
+    {
+     "materia": "Dirección Financiera de Empresas de Seguros",
+     "completada": "2026-11-17",
+     "lan": "2026-12-02",
+     "antic": 15
+    },
+    {
+     "materia": "Energía de la biomasa",
+     "completada": "2026-11-18",
+     "lan": "2026-12-02",
+     "antic": 14
+    },
+    {
+     "materia": "Epidemiología de las Enfermedades Transmisibles y No transmisibles",
+     "completada": "2026-11-17",
+     "lan": "2026-12-02",
+     "antic": 15
+    },
+    {
+     "materia": "Herramientas de coaching para la gestión de personas",
+     "completada": "2026-11-17",
+     "lan": "2026-12-02",
+     "antic": 15
+    },
+    {
+     "materia": "Administración de recursos y eficiencia en la gestión del estado",
+     "completada": "2026-11-20",
+     "lan": "2026-12-02",
+     "antic": 12
+    },
+    {
+     "materia": "Entorno Económico Internacional y Mercados Financieros",
+     "completada": "2026-11-20",
+     "lan": "2026-12-02",
+     "antic": 12
+    },
+    {
+     "materia": "Marketing de contenidos",
+     "completada": "2026-11-20",
+     "lan": "2026-12-02",
+     "antic": 12
+    },
+    {
+     "materia": "Currículo y planificación",
+     "completada": "2026-11-19",
+     "lan": "2026-12-02",
+     "antic": 13
+    },
+    {
+     "materia": "Protección de datos en el ámbito privado",
+     "completada": "2026-11-18",
+     "lan": "2026-12-02",
+     "antic": 14
+    }
+   ],
+   "tipos": [
+    {
+     "tipo": "HTML",
+     "frente": "D",
+     "min": 89,
+     "ref": 89
+    },
+    {
+     "tipo": "Genially",
+     "frente": "D",
+     "min": 134,
+     "ref": 138
+    },
+    {
+     "tipo": "Imágenes",
+     "frente": "D",
+     "min": 45,
+     "ref": 54
+    },
+    {
+     "tipo": "Infografía",
+     "frente": "D",
+     "min": 51,
+     "ref": 44
+    },
+    {
+     "tipo": "Banner",
+     "frente": "D",
+     "min": 15,
+     "ref": 16
+    },
+    {
+     "tipo": "Video de clase",
+     "frente": "V",
+     "min": 55,
+     "ref": 105
+    },
+    {
+     "tipo": "Video intro",
+     "frente": "V",
+     "min": 62,
+     "ref": 105
+    },
+    {
+     "tipo": "Video profesor",
+     "frente": "V",
+     "min": 9,
+     "ref": 17
+    },
+    {
+     "tipo": "Genially RDA",
+     "frente": "V",
+     "min": 7,
+     "ref": 21
+    }
+   ],
+   "llegadas": [
+    {
+     "materia": "Metodología de la investigación jurídica",
+     "programa": "Derecho Laboral",
+     "lan": "2026-12-02",
+     "debia": "2026-10-13",
+     "llego": "2026-11-04",
+     "atraso": 22
+    },
+    {
+     "materia": "Cineantropometría nutricional en el deporte",
+     "programa": "Nutrición Deportiva",
+     "lan": "2026-12-02",
+     "debia": "2026-10-13",
+     "llego": "2026-11-05",
+     "atraso": 23
+    },
+    {
+     "materia": "Herramientas y técnicas de análisis de neurociencias en el marketing",
+     "programa": "Neuromarketing",
+     "lan": "2026-12-02",
+     "debia": "2026-10-13",
+     "llego": "2026-11-05",
+     "atraso": 23
+    },
+    {
+     "materia": "Agente vehicular",
+     "programa": "Gestión del Transporte",
+     "lan": "2027-01-13",
+     "debia": "2026-11-13",
+     "llego": "2026-11-05",
+     "atraso": -8
+    },
+    {
+     "materia": "Medicina Legal y Análisis Estadístico",
+     "programa": "Criminalística",
+     "lan": "2027-01-13",
+     "debia": "2026-11-13",
+     "llego": "2026-11-06",
+     "atraso": -7
+    },
+    {
+     "materia": "Mercado de Valores",
+     "programa": "Dirección Financiera",
+     "lan": "2027-01-13",
+     "debia": "2026-11-13",
+     "llego": "2026-11-06",
+     "atraso": -7
+    },
+    {
+     "materia": "Responsabilidad Social Corporativa",
+     "programa": "Gerencia de la calidad e Innovación",
+     "lan": "2026-12-02",
+     "debia": "2026-10-13",
+     "llego": "2026-11-06",
+     "atraso": 24
+    },
+    {
+     "materia": "Técnicas, métodos y procesos de investigación de accidentes de tráfico",
+     "programa": "Gestión del Transporte",
+     "lan": "2027-04-07",
+     "debia": "2027-02-16",
+     "llego": "2026-11-09",
+     "atraso": -99
+    },
+    {
+     "materia": "Planificación dietoterapéutica para el deportista",
+     "programa": "Nutrición Deportiva",
+     "lan": "2027-01-13",
+     "debia": "2026-11-13",
+     "llego": "2026-11-10",
+     "atraso": -3
+    },
+    {
+     "materia": "Gobernanza Corporativa",
+     "programa": "Finanzas Corporativas",
+     "lan": "2027-01-13",
+     "debia": "2026-11-13",
+     "llego": "2026-11-10",
+     "atraso": -3
+    },
+    {
+     "materia": "Marketing móvil",
+     "programa": "Mercadotecnia estratégica digital",
+     "lan": "2027-01-13",
+     "debia": "2026-11-15",
+     "llego": "2026-11-11",
+     "atraso": -4
+    },
+    {
+     "materia": "Gestión de Riesgos Laborales",
+     "programa": "Gestión de Riesgos",
+     "lan": "2027-01-13",
+     "debia": "2026-11-15",
+     "llego": "2026-11-11",
+     "atraso": -4
+    },
+    {
+     "materia": "Métodos Estadísticos para Empresas de Seguros",
+     "programa": "Gestión Integral de Seguros",
+     "lan": "2027-01-13",
+     "debia": "2026-11-13",
+     "llego": "2026-11-11",
+     "atraso": -2
+    },
+    {
+     "materia": "Didáctica de Lengua y Literatura",
+     "programa": "Educación Básica",
+     "lan": "2027-01-13",
+     "debia": "2026-11-12",
+     "llego": "2026-11-11",
+     "atraso": -1
+    },
+    {
+     "materia": "Performance y analítica de datos",
+     "programa": "Dirección Publicitaria y Creativa",
+     "lan": "2027-01-13",
+     "debia": "2026-11-15",
+     "llego": "2026-11-11",
+     "atraso": -4
+    },
+    {
+     "materia": "Otras energías renovables y eficiencia energética",
+     "programa": "Energías Renovables",
+     "lan": "2027-01-13",
+     "debia": "2026-11-15",
+     "llego": "2026-11-13",
+     "atraso": -2
+    },
+    {
+     "materia": "Responsabilidad Social Organizacional",
+     "programa": "Desarrollo Sostenible y RSO",
+     "lan": "2027-01-13",
+     "debia": "2026-11-13",
+     "llego": "2026-11-16",
+     "atraso": 3
+    },
+    {
+     "materia": "Gobernanza de los Destinos Turísticos",
+     "programa": "Turismo",
+     "lan": "2027-01-13",
+     "debia": "2026-11-15",
+     "llego": "2026-11-16",
+     "atraso": 1
+    },
+    {
+     "materia": "Medicina del Trabajo",
+     "programa": "Seguridad y Salud Ocupacional",
+     "lan": "2027-01-13",
+     "debia": "2026-11-15",
+     "llego": "2026-11-17",
+     "atraso": 2
+    },
+    {
+     "materia": "Identidad, reputación y gestión de comunidades virtuales",
+     "programa": "Marketing y Comunicación",
+     "lan": "2027-01-13",
+     "debia": "2026-11-15",
+     "llego": "2026-11-19",
+     "atraso": 4
+    },
+    {
+     "materia": "Gestión de Personas",
+     "programa": "Gestión de Proyectos",
+     "lan": "2026-12-02",
+     "debia": "2026-10-13",
+     "llego": "2026-11-19",
+     "atraso": 37
+    },
+    {
+     "materia": "Responsabilidad derivadas del control de recursos públicos",
+     "programa": "Derecho Procesal Penal y Litigación Oral",
+     "lan": "2027-01-13",
+     "debia": "2026-11-12",
+     "llego": "2026-11-19",
+     "atraso": 7
+    },
+    {
+     "materia": "Autopartes e insumos del sector automotriz",
+     "programa": "Ingeniería Automotriz",
+     "lan": "2027-01-11",
+     "debia": "2026-11-15",
+     "llego": "2026-11-19",
+     "atraso": 4
+    }
+   ],
+   "calidad": null,
+   "proyeccion": {
+    "mes": "Noviembre 2026",
+    "periodo": "2 al 30 de noviembre de 2026",
+    "dh": 19,
+    "festivos": "2/11 y 16/11 (Colombia); en Canarias el 2/11 sí es festivo y el 16/11 no",
+    "capacidad": [
+     {
+      "p": "Diseño",
+      "dias": 19,
+      "n": 5,
+      "nota": "5 diseñadores sin ausencias"
+     },
+     {
+      "p": "Diseño",
+      "dias": 12,
+      "n": 1,
+      "nota": "Vacaciones 20–30/11"
+     },
+     {
+      "p": "Diseño",
+      "dias": 15,
+      "n": 1,
+      "nota": "Vacaciones 9–13/11; calendario de Canarias"
+     }
+    ],
+    "capD": 40.67,
+    "capV": 56,
+    "lotes": [
+     {
+      "lote": "11/11",
+      "materias": 32,
+      "abiertas": 6,
+      "porIngresar": 0,
+      "fD": 3.16,
+      "fV": 3.84,
+      "fecha": "Jue 5/11",
+      "real": true
+     },
+     {
+      "lote": "30/11",
+      "materias": 2,
+      "abiertas": 2,
+      "porIngresar": 0,
+      "fD": 1.84,
+      "fV": 1.0,
+      "fecha": "Vie 6/11",
+      "real": true
+     },
+     {
+      "lote": "2/12",
+      "materias": 33,
+      "abiertas": 29,
+      "porIngresar": 4,
+      "fD": 33,
+      "fV": 33,
+      "fecha": "Vie 27/11",
+      "real": false,
+      "fechaD": "Vie 27/11",
+      "fechaV": "Vie 20/11"
+     },
+     {
+      "lote": "Enero (11 y 13/1)",
+      "materias": 31,
+      "abiertas": 2,
+      "porIngresar": 29,
+      "fD": 31,
+      "fV": 31,
+      "fecha": "Diciembre",
+      "real": false,
+      "fechaD": "Diciembre",
+      "fechaV": "Lun 7/12"
+     }
+    ],
+    "necesidad": 38.0,
+    "necesidadV": 37.84,
+    "esperadasMes": 41,
+    "diario": {
+     "fechas": [
+      "31/10",
+      "3/11",
+      "4/11",
+      "5/11",
+      "6/11",
+      "9/11",
+      "10/11",
+      "11/11",
+      "12/11",
+      "13/11",
+      "16/11",
+      "17/11",
+      "18/11",
+      "19/11",
+      "20/11",
+      "23/11",
+      "24/11",
+      "25/11",
+      "26/11",
+      "27/11",
+      "30/11"
+     ],
+     "dProj": [
+      0,
+      2.33,
+      4.67,
+      7.0,
+      9.33,
+      11.33,
+      13.33,
+      15.33,
+      17.33,
+      19.33,
+      19.67,
+      22.0,
+      24.33,
+      26.67,
+      28.67,
+      30.67,
+      32.67,
+      34.67,
+      36.67,
+      38.67,
+      40.67
+     ],
+     "vProj": [
+      0,
+      2,
+      5,
+      8,
+      11,
+      14,
+      17,
+      20,
+      23,
+      26,
+      26,
+      29,
+      32,
+      35,
+      38,
+      41,
+      44,
+      47,
+      50,
+      53,
+      56
+     ],
+     "dReal": [
+      0,
+      1.31,
+      3.7,
+      6.59,
+      7.84,
+      9.92,
+      12.42,
+      13.51,
+      15.01,
+      17.26,
+      17.59,
+      20.17,
+      21.84,
+      24.09,
+      26.67
+     ],
+     "vReal": [
+      0,
+      1.67,
+      3.67,
+      7.0,
+      9.5,
+      11.67,
+      14.83,
+      17.83,
+      18.5,
+      22.33,
+      22.83,
+      24.5,
+      27.83,
+      30.25,
+      32.67
+     ]
+    }
+   },
+   "seguimiento": {
+    "corte": "22/11/2026",
+    "diasTranscurridos": 13,
+    "diasTotales": 19,
+    "dReal": 26.67,
+    "dProj": 28.67,
+    "vReal": 32.67,
+    "vProj": 38.0,
+    "dFalta": 11.33,
+    "vFalta": 5.17,
+    "dCapRestante": 10.0,
+    "ritmoNecesarioD": 1.133,
+    "ultimaSemana": "16–22 nov",
+    "semanas": [
+     {
+      "label": "2–8 nov",
+      "dias": 4,
+      "dProj": 9.33,
+      "dReal": 7.84,
+      "vProj": 11,
+      "vReal": 9.5
+     },
+     {
+      "label": "9–15 nov",
+      "dias": 5,
+      "dProj": 10.0,
+      "dReal": 10.42,
+      "vProj": 15,
+      "vReal": 14.33
+     },
+     {
+      "label": "16–22 nov",
+      "dias": 4,
+      "dProj": 9.33,
+      "dReal": 9.42,
+      "vProj": 12,
+      "vReal": 9.83
+     }
+    ],
+    "completasMes": 29,
+    "completasEsperadas": 41,
+    "lote212": {
+     "total": 33,
+     "completas": 20,
+     "produccion": 7,
+     "espera": 6,
+     "porIngresar": 0
+    },
+    "loteEnero": {
+     "total": 31,
+     "recibidas": 22,
+     "faltan": 9
+    },
+    "desde": "23/11",
+    "finVideo": "24/11",
+    "finDiseno": "30/11",
+    "finLote": "Lun 30/11"
+   },
+   "textos": {
+    "lede": "La semana del 16/11 diseño cumplió su meta (101 %) con un festivo y, desde el 20/11, una persona menos; video quedó en el 82 %. Gestión de Personas, la última materia del lote 2/12, llegó el 19/11 y ya está en producción.",
+    "mejoro": [
+     [
+      "Semana del 16/11",
+      "diseño al 101 % de su meta, con festivo y vacaciones"
+     ],
+     [
+      "Lote 2/12",
+      "pasó de 11 a 20 de 33 materias completas en la semana"
+     ],
+     [
+      "Horas por materia en diseño",
+      "17,2 h la semana del 16/11 (la anterior, 19,6 h)"
+     ],
+     [
+      "Minutos por pieza",
+      "HTML 89 min y Genially 134, en la referencia o por debajo"
+     ],
+     [
+      "Lote de enero",
+      "22 de 31 recibidas y una ya completa (Gestión Ambiental organizacional, que pasó del lote 2/12 al de enero)"
+     ]
+    ],
+    "noMejoro": [
+     [
+      "Video",
+      "82 % de su meta la semana del 16/11 (9,8 de 12 materias)"
+     ],
+     [
+      "Diferencia entre diseño y video",
+      "subió a 5,2 días la semana del 16/11 (la anterior, 1,7)"
+     ],
+     [
+      "Lote 2/12 en diseño",
+      "faltan 11,3 materias y quedan 10,0 de capacidad hasta el viernes 27/11"
+     ],
+     [
+      "Llegada tarde",
+      "Gestión de Personas llegó el 19/11, 37 días después de lo previsto"
+     ]
+    ],
+    "sigue": [
+     [
+      "Lote 2/12",
+      "a la meta, diseño lo termina el lunes 30/11, 2 días antes del lanzamiento"
+     ],
+     [
+      "Video",
+      "termina el lote 2/12 hacia el 24/11 y sigue con enero"
+     ],
+     [
+      "Lote de enero",
+      "faltan 9 de 31 por llegar"
+     ],
+     [
+      "Cierre de noviembre",
+      "martes 1/12, con la proyección de diciembre"
+     ]
+    ],
+    "acciones": {
+     "pro": [
+      {
+       "t": "pro",
+       "f": "Proyección",
+       "q": "Lote 2/12 completo antes del lanzamiento",
+       "d": "Al 22/11 faltan 11,3 materias de diseño. A la meta (2,0 por día con 6 diseñadores) se terminan el lunes 30/11; para el viernes 27/11 haría falta el 113 %.",
+       "a": "<b>Sostener al menos 2 materias de diseño por día hábil</b> hasta cerrar el lote; el dashboard ya asigna primero el lote 2/12."
+      },
+      {
+       "t": "pro",
+       "f": "Proyección",
+       "q": "Video pasa a enero",
+       "d": "Faltan 5,2 materias de video del lote 2/12; a su meta las termina el martes 24/11.",
+       "a": "<b>Desde el 24/11, video sigue con el lote de enero</b>, que tiene 22 materias recibidas."
+      }
+     ],
+     "dis": [
+      {
+       "t": "dis",
+       "f": "Diseño",
+       "q": "Horas por materia aún sobre la meta",
+       "d": "18,3 h por materia en noviembre (octubre: 17,3 h); la semana del 16/11 bajó a 17,2 h.",
+       "a": "<b>Estandarizar Genially y HTML</b> con el método más rápido validado. Meta: 15 h."
+      }
+     ],
+     "vid": [
+      {
+       "t": "vid",
+       "f": "Video",
+       "q": "Video por debajo de su meta",
+       "d": "86 %, 96 % y 82 % en las tres semanas de noviembre.",
+       "a": "<b>6 videos por día por editora.</b> Revisar cada mañana que las 3 tengan timer activo."
+      }
+     ],
+     "cal": [
+      {
+       "t": "cal",
+       "f": "Calidad",
+       "q": "Datos de calidad de noviembre pendientes",
+       "d": "Se incorporan con el informe de revisión del mes.",
+       "a": "<b>Mantener las acciones de octubre:</b> cabeceras e índices, plantillas limpias y cada pieza en su carpeta."
+      }
+     ],
+     "ent": [
+      {
+       "t": "ent",
+       "f": "Entrada",
+       "q": "Gestión de Personas llegó tarde",
+       "d": "Ingresó el 19/11, 37 días después de lo previsto; ya está en producción.",
+       "a": "<b>Acordar con instruccional una fecha firme por lote</b> y avisar a la fábrica cada martes cuántas llegan."
+      },
+      {
+       "t": "ent",
+       "f": "Entrada",
+       "q": "Lote de enero",
+       "d": "22 de 31 recibidas al 22/11; el ingreso previsto terminaba el 15/11.",
+       "a": "<b>Confirmar con instruccional las fechas de las 9 restantes.</b>"
+      }
+     ]
+    },
+    "why": [
+     "Las materias completas por semana siguen en ≈10 porque dependen de cuántas llegan, no de la velocidad de la fábrica.",
+     "Todas las materias que salieron desde el 19/10 ingresaron tarde, y eso mantiene las alertas del dashboard en rojo.",
+     "El promedio del mes esconde la tendencia semanal.",
+     "La «velocidad promedio» del dashboard cuenta días calendario, con fines de semana y festivos."
+    ],
+    "audio": "Avance de noviembre al 22 de noviembre. Van 29 materias completas de las 41 esperadas, y del lote del 2 de diciembre van 20 de 33. La semana del 16 de noviembre diseño cumplió su meta, al 101 por ciento, aun con el festivo y una persona menos desde el viernes; video quedó en el 82 por ciento. A diseño le faltan 11,3 materias del lote: trabajando a la meta, las termina el lunes 30 de noviembre, dos días antes del lanzamiento. Video termina su parte hacia el 24 de noviembre y sigue con el lote de enero, que ya tiene 22 de 31 materias recibidas.",
+    "titular": "Van 29 materias completas en noviembre; el lote 2/12 lleva 20 de 33 y, a la meta, sale completo el lunes 30/11"
+   },
+   "lotesMes": [
+    {
+     "lote": "11/11",
+     "esperadas": 6,
+     "completas": 6
+    },
+    {
+     "lote": "30/11",
+     "esperadas": 2,
+     "completas": 2
+    },
+    {
+     "lote": "2/12",
+     "esperadas": 33,
+     "completas": 20
+    },
+    {
+     "lote": "Enero",
+     "esperadas": 1,
+     "completas": 1
+    }
+   ]
   }
  }
 }
